@@ -1,0 +1,23 @@
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: ml-jupyter
+
+    ports:
+      - "8890:8888"
+
+    volumes:
+      - .:/home/jovyan/work
+
+    working_dir: /home/jovyan/work
+
+    restart: unless-stopped
+
+    command: >
+      start-notebook.sh
+      --ServerApp.token=''
+      --ServerApp.password=''
+      --ServerApp.allow_origin='*'

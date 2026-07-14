@@ -6,8 +6,8 @@ const object = {
     "age" : 25
 }
 
-const jsonString = JSON.stringify(object);
-const path = 'data.json';
+const jsonString = JSON.stringify(object,null,2);
+const path = 'FSD\\prac1\\data.json';
 
 fs.writeFile(path,jsonString,(err)=>{
     if(err){

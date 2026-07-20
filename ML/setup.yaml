@@ -10,9 +10,9 @@ services:
       - "8890:8888"
 
     volumes:
-      - .:/home/jovyan/work
+      - .:/home/smith/work
 
-    working_dir: /home/jovyan/work
+    working_dir: /home/smith/work
 
     restart: unless-stopped
 

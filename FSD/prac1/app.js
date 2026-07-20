@@ -16,3 +16,4 @@ fs.writeFile(path,jsonString,(err)=>{
         console.log("file write sucessfull");
     }
 })
+

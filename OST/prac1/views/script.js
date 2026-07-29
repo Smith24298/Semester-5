@@ -101,7 +101,6 @@ const form = document.getElementById("contactForm");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
-
   // Current date & time
   document.getElementById("time").value = new Date().toLocaleString();
 

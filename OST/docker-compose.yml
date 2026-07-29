@@ -1,37 +1,21 @@
 services:
-  mysql:
-    image: mysql:8.4
-    container_name: mysql-db
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: test_db
-      MYSQL_USER: app_user
-      MYSQL_PASSWORD: app_password
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
     ports:
-      - "3306:3306"
+      - "8890:8888"
+
     volumes:
-      - mysql-data:/var/lib/mysql
-    networks:
-      - mysql-network
+      - .:/home/smith/work
 
-  phpmyadmin:
-    image: phpmyadmin:latest
-    container_name: mysql-client
-    restart: always
-    depends_on:
-      - mysql
-    environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3306
-      PMA_ARBITRARY: 1
-    ports:
-      - "8080:80"
-    networks:
-      - mysql-network
+    working_dir: /home/smith/work
 
-volumes:
-  mysql-data:
+    restart: unless-stopped
 
-networks:
-  mysql-network:
+    command: >
+      start-notebook.sh
+      --ServerApp.token=''
+      --ServerApp.password=''
+      --ServerApp.allow_origin='*'

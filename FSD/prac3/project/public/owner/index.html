@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Property | PG & Hostel Finder</title>
+d
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="container">
+            <h1>PG & Hostel Finder</h1>
+            <p class="subtitle">Owner Property Registration</p>
+        </div>
+    </header>
+
+    <!-- ================= MAIN ================= -->
+    <main class="container">
+
+        <section class="form-card">
+
+            <div class="title-area">
+                <h2>Add New Property</h2>
+                <p>Fill in the details below to list your property.</p>
+            </div>
+
+            <form id="propertyForm">
+
+                <!-- ===================================================
+                     BASIC INFORMATION
+                ==================================================== -->
+                <section class="form-section">
+
+                    <h3>Basic Information</h3>
+
+                    <div class="grid-2">
+
+                        <div class="form-group">
+                            <label for="propertyName">
+                                Property Name <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="propertyName"
+                                placeholder="Ex. Sunrise Boys PG"
+                                required>
+
+                            <small class="error"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="propertyType">
+                                Property Type <span>*</span>
+                            </label>
+
+                            <select id="propertyType" required>
+                                <option value="">Select Type</option>
+                                <option>PG</option>
+                                <option>Hostel</option>
+                            </select>
+
+                            <small class="error"></small>
+                        </div>
+
+                    </div>
+
+                    <div class="grid-2">
+
+                        <div class="form-group">
+                            <label for="propertyFor">
+                                Suitable For <span>*</span>
+                            </label>
+
+                            <select id="propertyFor" required>
+                                <option value="">Select</option>
+                                <option>Boys</option>
+                                <option>Girls</option>
+                                <option>Unisex</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="propertyStatus">
+                                Property Status
+                            </label>
+
+                            <select id="propertyStatus">
+                                <option>Available</option>
+                                <option>Limited Availability</option>
+                                <option>Full</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="description">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="description"
+                            rows="5"
+                            placeholder="Write about your property..."></textarea>
+
+                    </div>
+
+                </section>
+
+                <!-- ===================================================
+                     LOCATION
+                ==================================================== -->
+                <section class="form-section">
+
+                    <h3>Location Details</h3>
+
+                    <div class="grid-2">
+
+                        <div class="form-group">
+                            <label for="university">
+                                Nearby University <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="university"
+                                placeholder="Ex. Nirma University"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">
+                                City <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="city"
+                                placeholder="Ahmedabad"
+                                required>
+                        </div>
+
+                    </div>
+
+                    <div class="grid-2">
+
+                        <div class="form-group">
+                            <label for="state">
+                                State <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="state"
+                                placeholder="Gujarat"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pincode">
+                                Pincode
+                            </label>
+
+                            <input
+                                type="text"
+                                id="pincode"
+                                placeholder="382481">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="address">
+                            Full Address <span>*</span>
+                        </label>
+
+                        <textarea
+                            id="address"
+                            rows="3"
+                            placeholder="Enter complete address"
+                            required></textarea>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="googleLocation">
+                            Google Maps Link
+                            <small>(Optional)</small>
+                        </label>
+
+                        <input
+                            type="url"
+                            id="googleLocation"
+                            placeholder="https://maps.google.com/...">
+
+                    </div>
+
+                </section>
+
+                <!-- ===================================================
+                     PRICING
+                ==================================================== -->
+                <section class="form-section">
+
+                    <h3>Pricing</h3>
+
+                    <div class="grid-3">
+
+                        <div class="form-group">
+                            <label for="monthlyRent">
+                                Monthly Rent
+                            </label>
+
+                            <input
+                                type="number"
+                                id="monthlyRent"
+                                placeholder="7000">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="securityDeposit">
+                                Security Deposit
+                            </label>
+
+                            <input
+                                type="number"
+                                id="securityDeposit"
+                                placeholder="5000">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="maintenance">
+                                Maintenance
+                            </label>
+
+                            <input
+                                type="number"
+                                id="maintenance"
+                                placeholder="500">
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ===================================================
+                     ROOM DETAILS
+                ==================================================== -->
+                <section class="form-section">
+
+                    <h3>Room Details</h3>
+
+                    <div class="grid-3">
+
+                        <div class="form-group">
+                            <label>Total Rooms</label>
+                            <input
+                                type="number"
+                                id="rooms"
+                                min="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Total Beds</label>
+                            <input
+                                type="number"
+                                id="beds"
+                                min="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Available Beds</label>
+                            <input
+                                type="number"
+                                id="availableBeds"
+                                min="0">
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ===================================================
+                     AMENITIES
+                ==================================================== -->
+                <section class="form-section">
+
+                    <div class="section-header">
+
+                        <h3>Amenities</h3>
+
+                        <button
+                            type="button"
+                            id="addAmenityBtn"
+                            class="secondary-btn">
+                            + Add Amenity
+                        </button>
+
+                    </div>
+
+                    <div id="amenitiesContainer">
+
+                        <div class="dynamic-row">
+
+                            <input
+                                type="text"
+                                placeholder="WiFi">
+
+                            <button
+                                type="button"
+                                class="remove-btn">
+                                Remove
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ===================================================
+                     RULES
+                ==================================================== -->
+                <section class="form-section">
+
+                    <div class="section-header">
+
+                        <h3>Property Rules</h3>
+
+                        <button
+                            type="button"
+                            id="addRuleBtn"
+                            class="secondary-btn">
+                            + Add Rule
+                        </button>
+
+                    </div>
+
+                    <div id="rulesContainer">
+
+                        <div class="dynamic-row">
+
+                            <input
+                                type="text"
+                                placeholder="No Smoking">
+
+                            <button
+                                type="button"
+                                class="remove-btn">
+                                Remove
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ===================================================
+                     CONTACT
+                ==================================================== -->
+                <section class="form-section">
+
+                    <h3>Contact Information</h3>
+
+                    <div class="grid-2">
+
+                        <div class="form-group">
+                            <label>Owner Name</label>
+
+                            <input
+                                type="text"
+                                id="ownerName">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number</label>
+
+                            <input
+                                type="tel"
+                                id="phone">
+                        </div>
+
+                    </div>
+
+                    <div class="grid-2">
+
+                        <div class="form-group">
+                            <label>WhatsApp Number</label>
+
+                            <input
+                                type="tel"
+                                id="whatsapp">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+
+                            <input
+                                type="email"
+                                id="email">
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ===================================================
+                     IMAGES
+                ==================================================== -->
+                <section class="form-section">
+
+                    <h3>Property Images</h3>
+
+                    <div class="grid-2">
+
+                        <div class="form-group">
+
+                            <label>
+                                Cover Image
+                            </label>
+
+                            <input
+                                type="file"
+                                id="coverImage"
+                                accept="image/*">
+
+                            <div id="coverPreview"
+                                class="image-preview">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>
+                                Gallery Images
+                            </label>
+
+                            <input
+                                type="file"
+                                id="galleryImages"
+                                accept="image/*"
+                                multiple>
+
+                            <div id="galleryPreview"
+                                class="gallery-preview">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ===================================================
+                     RESPONSIVE DEMO IMAGE
+                     (Practical Requirement II)
+                ==================================================== -->
+                <section class="form-section">
+
+                    <h3>Preview Banner</h3>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200"
+                        alt="Property"
+                        class="responsive-image">
+
+                </section>
+
+                <!-- ===================================================
+                     BUTTONS
+                ==================================================== -->
+                <section class="button-section">
+
+                    <button
+                        type="submit"
+                        class="primary-btn">
+                        Save Property
+                    </button>
+
+                    <button
+                        type="reset"
+                        class="danger-btn">
+                        Reset Form
+                    </button>
+
+                </section>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PG / Hostel Manager</title>
+
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f2f2;
+    color: #222;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  p.subtitle {
+    text-align: center;
+    color: #666;
+    margin-top: 0;
+    margin-bottom: 25px;
+  }
+
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .box {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+  }
+
+  .box h2 {
+    margin-top: 0;
+    font-size: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="email"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 3px;
+    display: none;
+  }
+
+  .required {
+    color: red;
+  }
+
+  .btn-row {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .btn-save {
+    background: #2f5fff;
+    color: #fff;
+  }
+  .btn-save:hover { background: #2347d6; }
+
+  .btn-clear {
+    background: #eee;
+    color: #333;
+    border: 1px solid #ccc;
+  }
+  .btn-clear:hover { background: #ddd; }
+
+  .message {
+    display: none;
+    background: #e6f7e6;
+    color: #226622;
+    border: 1px solid #b6e0b6;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  /* ---- list of saved PGs ---- */
+  .pg-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+  }
+
+  .pg-card h3 {
+    margin: 0 0 5px 0;
+    font-size: 17px;
+  }
+
+  .pg-card .type-tag {
+    display: inline-block;
+    background: #eaf0ff;
+    color: #2347d6;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 8px;
+  }
+
+  .pg-card p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #444;
+  }
+
+  .pg-card .label {
+    font-weight: bold;
+    color: #222;
+  }
+
+  .pg-card .delete-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #ffdddd;
+    color: #b30000;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .pg-card .delete-btn:hover {
+    background: #ffbbbb;
+  }
+
+  .empty-msg {
+    text-align: center;
+    color: #888;
+    padding: 20px;
+    font-style: italic;
+  }
+
+  .count-badge {
+    background: #2f5fff;
+    color: #fff;
+    font-size: 13px;
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-left: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <h1>PG / Hostel Manager</h1>
+  <p class="subtitle">Add property details below — added entries show up in the list underneath.</p>
+
+  <div class="message" id="successMsg"></div>
+
+  <!-- ================= FORM ================= -->
+  <div class="box">
+    <h2>Add PG / Hostel Details</h2>
+
+    <form id="pgForm">
+      <label>Property Name <span class="required">*</span></label>
+      <input type="text" id="propertyName">
+      <div class="error" id="err_propertyName">Property name is required.</div>
+
+      <label>Property Type</label>
+      <select id="propertyType">
+        <option value="Boys Hostel">Boys Hostel</option>
+        <option value="Girls Hostel">Girls Hostel</option>
+        <option value="PG">PG</option>
+        <option value="Apartment">Apartment</option>
+      </select>
+
+      <label>City <span class="required">*</span></label>
+      <input type="text" id="city">
+      <div class="error" id="err_city">City is required.</div>
+
+      <label>Area <span class="required">*</span></label>
+      <input type="text" id="area">
+      <div class="error" id="err_area">Area is required.</div>
+
+      <label>Complete Address <span class="required">*</span></label>
+      <textarea id="address" rows="2"></textarea>
+      <div class="error" id="err_address">Address is required.</div>
+
+      <label>Monthly Rent (₹) <span class="required">*</span></label>
+      <input type="number" id="monthlyRent" min="0">
+      <div class="error" id="err_monthlyRent">Enter a valid rent (0 or more).</div>
+
+      <label>Security Deposit (₹)</label>
+      <input type="number" id="securityDeposit" min="0">
+      <div class="error" id="err_securityDeposit">Deposit cannot be negative.</div>
+
+      <label>Total Rooms</label>
+      <input type="number" id="totalRooms" min="0">
+      <div class="error" id="err_totalRooms">Total rooms cannot be negative.</div>
+
+      <label>Available Rooms</label>
+      <input type="number" id="availableRooms" min="0">
+      <div class="error" id="err_availableRooms">Available rooms cannot be negative.</div>
+
+      <label>Owner Name <span class="required">*</span></label>
+      <input type="text" id="ownerName">
+      <div class="error" id="err_ownerName">Owner name is required.</div>
+
+      <label>Owner Phone <span class="required">*</span></label>
+      <input type="tel" id="ownerPhone" placeholder="10-digit mobile number">
+      <div class="error" id="err_ownerPhone">Enter a valid 10-digit phone number.</div>
+
+      <label>Owner Email</label>
+      <input type="email" id="ownerEmail">
+      <div class="error" id="err_ownerEmail">Enter a valid email address.</div>
+
+      <label>Description</label>
+      <textarea id="description" rows="3"></textarea>
+
+      <div class="btn-row">
+        <button type="button" class="btn-save" id="saveBtn">Save Property</button>
+        <button type="button" class="btn-clear" id="clearBtn">Clear</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- ================= LIST OF ADDED PGs ================= -->
+  <div class="box">
+    <h2>Added Properties <span class="count-badge" id="countBadge">0</span></h2>
+    <div id="pgList">
+      <p class="empty-msg" id="emptyMsg">No properties added yet.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* =========================================================
+   PG / HOSTEL MANAGER — plain HTML/CSS/JS, no framework.
+   Data is kept in a simple in-memory array (properties[]).
+   Replace saveProperty()'s console.log / array push with a
+   real fetch() call to your backend when ready.
+========================================================= */
+
+// in-memory "database" of added properties
+let properties = [];
+let nextId = 1;
+
+// ---- field references ----
+const fields = {
+  propertyName: document.getElementById('propertyName'),
+  propertyType: document.getElementById('propertyType'),
+  city: document.getElementById('city'),
+  area: document.getElementById('area'),
+  address: document.getElementById('address'),
+  monthlyRent: document.getElementById('monthlyRent'),
+  securityDeposit: document.getElementById('securityDeposit'),
+  totalRooms: document.getElementById('totalRooms'),
+  availableRooms: document.getElementById('availableRooms'),
+  ownerName: document.getElementById('ownerName'),
+  ownerPhone: document.getElementById('ownerPhone'),
+  ownerEmail: document.getElementById('ownerEmail'),
+  description: document.getElementById('description')
+};
+
+function hideAllErrors() {
+  document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
+}
+
+function validateForm() {
+  hideAllErrors();
+  let valid = true;
+
+  function showError(id) {
+    document.getElementById('err_' + id).style.display = 'block';
+    valid = false;
+  }
+
+  if (fields.propertyName.value.trim() === '') showError('propertyName');
+  if (fields.city.value.trim() === '') showError('city');
+  if (fields.area.value.trim() === '') showError('area');
+  if (fields.address.value.trim() === '') showError('address');
+
+  const rent = fields.monthlyRent.value;
+  if (rent === '' || Number(rent) < 0) showError('monthlyRent');
+
+  const deposit = fields.securityDeposit.value;
+  if (deposit !== '' && Number(deposit) < 0) showError('securityDeposit');
+
+  const totalRooms = fields.totalRooms.value;
+  if (totalRooms !== '' && Number(totalRooms) < 0) showError('totalRooms');
+
+  const availRooms = fields.availableRooms.value;
+  if (availRooms !== '' && Number(availRooms) < 0) showError('availableRooms');
+
+  if (fields.ownerName.value.trim() === '') showError('ownerName');
+
+  const phonePattern = /^[6-9]\d{9}$/;
+  if (!phonePattern.test(fields.ownerPhone.value.trim())) showError('ownerPhone');
+
+  const email = fields.ownerEmail.value.trim();
+  if (email !== '') {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) showError('ownerEmail');
+  }
+
+  console.log('validateForm(): valid =', valid);
+  return valid;
+}
+
+/**
+ * saveProperty()
+ * Collects the form data into an object and stores it.
+ * This is where a real app would call the backend API, e.g:
+ *   fetch('/api/properties', { method: 'POST', body: JSON.stringify(data) })
+ */
+function saveProperty() {
+  if (!validateForm()) {
+    return;
+  }
+
+  const data = {
+    id: nextId++,
+    propertyName: fields.propertyName.value.trim(),
+    propertyType: fields.propertyType.value,
+    city: fields.city.value.trim(),
+    area: fields.area.value.trim(),
+    address: fields.address.value.trim(),
+    monthlyRent: Number(fields.monthlyRent.value) || 0,
+    securityDeposit: Number(fields.securityDeposit.value) || 0,
+    totalRooms: Number(fields.totalRooms.value) || 0,
+    availableRooms: Number(fields.availableRooms.value) || 0,
+    ownerName: fields.ownerName.value.trim(),
+    ownerPhone: fields.ownerPhone.value.trim(),
+    ownerEmail: fields.ownerEmail.value.trim(),
+    description: fields.description.value.trim()
+  };
+
+  console.log('saveProperty(): saving ->', data);
+
+  properties.push(data);
+  renderList();
+  clearForm();
+  showMessage('Property added successfully.');
+}
+
+/**
+ * clearForm()
+ * Resets all input fields and hides any error messages.
+ */
+function clearForm() {
+  document.getElementById('pgForm').reset();
+  hideAllErrors();
+  console.log('clearForm(): form reset.');
+}
+
+/**
+ * deleteProperty(id)
+ * Removes a property from the in-memory list by id.
+ */
+function deleteProperty(id) {
+  properties = properties.filter(p => p.id !== id);
+  console.log('deleteProperty(): removed id', id);
+  renderList();
+}
+
+/**
+ * renderList()
+ * Rebuilds the "Added Properties" list on the page from
+ * the current `properties` array.
+ */
+function renderList() {
+  const listEl = document.getElementById('pgList');
+  const countBadge = document.getElementById('countBadge');
+  countBadge.textContent = properties.length;
+
+  if (properties.length === 0) {
+    listEl.innerHTML = '<p class="empty-msg">No properties added yet.</p>';
+    return;
+  }
+
+  listEl.innerHTML = '';
+  properties.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'pg-card';
+    card.innerHTML = `
+      <button class="delete-btn" onclick="deleteProperty(${p.id})">Delete</button>
+      <h3>${escapeHtml(p.propertyName)} <span class="type-tag">${escapeHtml(p.propertyType)}</span></h3>
+      <p><span class="label">Location:</span> ${escapeHtml(p.area)}, ${escapeHtml(p.city)}</p>
+      <p><span class="label">Address:</span> ${escapeHtml(p.address)}</p>
+      <p><span class="label">Rent:</span> ₹${p.monthlyRent.toLocaleString('en-IN')} / month
+         &nbsp;|&nbsp; <span class="label">Deposit:</span> ₹${p.securityDeposit.toLocaleString('en-IN')}</p>
+      <p><span class="label">Rooms:</span> ${p.availableRooms} available of ${p.totalRooms} total</p>
+      <p><span class="label">Owner:</span> ${escapeHtml(p.ownerName)} — ${escapeHtml(p.ownerPhone)}${p.ownerEmail ? ' — ' + escapeHtml(p.ownerEmail) : ''}</p>
+      ${p.description ? `<p><span class="label">Description:</span> ${escapeHtml(p.description)}</p>` : ''}
+    `;
+    listEl.appendChild(card);
+  });
+}
+
+// small helper to avoid raw HTML injection from typed text
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function showMessage(text) {
+  const msg = document.getElementById('successMsg');
+  msg.textContent = text;
+  msg.style.display = 'block';
+  setTimeout(() => { msg.style.display = 'none'; }, 2500);
+}
+
+// ---- button wiring ----
+document.getElementById('saveBtn').addEventListener('click', saveProperty);
+document.getElementById('clearBtn').addEventListener('click', clearForm);
+</script>
+
+</body>
+</html>

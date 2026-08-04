@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Add Property | PG & Hostel Finder</title>
-d
+    d
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-    <!-- ================= HEADER ================= -->
+<body>
     <header class="header">
         <div class="container">
             <h1>PG & Hostel Finder</h1>
             <p class="subtitle">Owner Property Registration</p>
         </div>
     </header>
-
-    <!-- ================= MAIN ================= -->
     <main class="container">
 
         <section class="form-card">
@@ -29,10 +27,6 @@ d
             </div>
 
             <form id="propertyForm">
-
-                <!-- ===================================================
-                     BASIC INFORMATION
-                ==================================================== -->
                 <section class="form-section">
 
                     <h3>Basic Information</h3>
@@ -44,11 +38,7 @@ d
                                 Property Name <span>*</span>
                             </label>
 
-                            <input
-                                type="text"
-                                id="propertyName"
-                                placeholder="Ex. Sunrise Boys PG"
-                                required>
+                            <input type="text" id="propertyName" placeholder="Ex. Sunrise Boys PG" required>
 
                             <small class="error"></small>
                         </div>
@@ -104,18 +94,11 @@ d
                             Description
                         </label>
 
-                        <textarea
-                            id="description"
-                            rows="5"
-                            placeholder="Write about your property..."></textarea>
+                        <textarea id="description" rows="5" placeholder="Write about your property..."></textarea>
 
                     </div>
 
                 </section>
-
-                <!-- ===================================================
-                     LOCATION
-                ==================================================== -->
                 <section class="form-section">
 
                     <h3>Location Details</h3>
@@ -127,11 +110,7 @@ d
                                 Nearby University <span>*</span>
                             </label>
 
-                            <input
-                                type="text"
-                                id="university"
-                                placeholder="Ex. Nirma University"
-                                required>
+                            <input type="text" id="university" placeholder="Ex. Nirma University" required>
                         </div>
 
                         <div class="form-group">
@@ -139,11 +118,7 @@ d
                                 City <span>*</span>
                             </label>
 
-                            <input
-                                type="text"
-                                id="city"
-                                placeholder="Ahmedabad"
-                                required>
+                            <input type="text" id="city" placeholder="Ahmedabad" required>
                         </div>
 
                     </div>
@@ -155,11 +130,7 @@ d
                                 State <span>*</span>
                             </label>
 
-                            <input
-                                type="text"
-                                id="state"
-                                placeholder="Gujarat"
-                                required>
+                            <input type="text" id="state" placeholder="Gujarat" required>
                         </div>
 
                         <div class="form-group">
@@ -167,10 +138,7 @@ d
                                 Pincode
                             </label>
 
-                            <input
-                                type="text"
-                                id="pincode"
-                                placeholder="382481">
+                            <input type="text" id="pincode" placeholder="382481">
                         </div>
 
                     </div>
@@ -181,11 +149,7 @@ d
                             Full Address <span>*</span>
                         </label>
 
-                        <textarea
-                            id="address"
-                            rows="3"
-                            placeholder="Enter complete address"
-                            required></textarea>
+                        <textarea id="address" rows="3" placeholder="Enter complete address" required></textarea>
 
                     </div>
 
@@ -196,18 +160,11 @@ d
                             <small>(Optional)</small>
                         </label>
 
-                        <input
-                            type="url"
-                            id="googleLocation"
-                            placeholder="https://maps.google.com/...">
+                        <input type="url" id="googleLocation" placeholder="https://maps.google.com/...">
 
                     </div>
 
                 </section>
-
-                <!-- ===================================================
-                     PRICING
-                ==================================================== -->
                 <section class="form-section">
 
                     <h3>Pricing</h3>
@@ -219,10 +176,7 @@ d
                                 Monthly Rent
                             </label>
 
-                            <input
-                                type="number"
-                                id="monthlyRent"
-                                placeholder="7000">
+                            <input type="number" id="monthlyRent" placeholder="7000">
                         </div>
 
                         <div class="form-group">
@@ -230,10 +184,7 @@ d
                                 Security Deposit
                             </label>
 
-                            <input
-                                type="number"
-                                id="securityDeposit"
-                                placeholder="5000">
+                            <input type="number" id="securityDeposit" placeholder="5000">
                         </div>
 
                         <div class="form-group">
@@ -241,19 +192,12 @@ d
                                 Maintenance
                             </label>
 
-                            <input
-                                type="number"
-                                id="maintenance"
-                                placeholder="500">
+                            <input type="number" id="maintenance" placeholder="500">
                         </div>
 
                     </div>
 
                 </section>
-
-                <!-- ===================================================
-                     ROOM DETAILS
-                ==================================================== -->
                 <section class="form-section">
 
                     <h3>Room Details</h3>
@@ -262,45 +206,29 @@ d
 
                         <div class="form-group">
                             <label>Total Rooms</label>
-                            <input
-                                type="number"
-                                id="rooms"
-                                min="1">
+                            <input type="number" id="rooms" min="1">
                         </div>
 
                         <div class="form-group">
                             <label>Total Beds</label>
-                            <input
-                                type="number"
-                                id="beds"
-                                min="1">
+                            <input type="number" id="beds" min="1">
                         </div>
 
                         <div class="form-group">
                             <label>Available Beds</label>
-                            <input
-                                type="number"
-                                id="availableBeds"
-                                min="0">
+                            <input type="number" id="availableBeds" min="0">
                         </div>
 
                     </div>
 
                 </section>
-
-                <!-- ===================================================
-                     AMENITIES
-                ==================================================== -->
                 <section class="form-section">
 
                     <div class="section-header">
 
                         <h3>Amenities</h3>
 
-                        <button
-                            type="button"
-                            id="addAmenityBtn"
-                            class="secondary-btn">
+                        <button type="button" id="addAmenityBtn" class="secondary-btn">
                             + Add Amenity
                         </button>
 
@@ -310,13 +238,9 @@ d
 
                         <div class="dynamic-row">
 
-                            <input
-                                type="text"
-                                placeholder="WiFi">
+                            <input type="text" placeholder="WiFi">
 
-                            <button
-                                type="button"
-                                class="remove-btn">
+                            <button type="button" class="remove-btn">
                                 Remove
                             </button>
 
@@ -325,20 +249,13 @@ d
                     </div>
 
                 </section>
-
-                <!-- ===================================================
-                     RULES
-                ==================================================== -->
                 <section class="form-section">
 
                     <div class="section-header">
 
                         <h3>Property Rules</h3>
 
-                        <button
-                            type="button"
-                            id="addRuleBtn"
-                            class="secondary-btn">
+                        <button type="button" id="addRuleBtn" class="secondary-btn">
                             + Add Rule
                         </button>
 
@@ -348,13 +265,9 @@ d
 
                         <div class="dynamic-row">
 
-                            <input
-                                type="text"
-                                placeholder="No Smoking">
+                            <input type="text" placeholder="No Smoking">
 
-                            <button
-                                type="button"
-                                class="remove-btn">
+                            <button type="button" class="remove-btn">
                                 Remove
                             </button>
 
@@ -363,10 +276,6 @@ d
                     </div>
 
                 </section>
-
-                <!-- ===================================================
-                     CONTACT
-                ==================================================== -->
                 <section class="form-section">
 
                     <h3>Contact Information</h3>
@@ -376,17 +285,13 @@ d
                         <div class="form-group">
                             <label>Owner Name</label>
 
-                            <input
-                                type="text"
-                                id="ownerName">
+                            <input type="text" id="ownerName">
                         </div>
 
                         <div class="form-group">
                             <label>Phone Number</label>
 
-                            <input
-                                type="tel"
-                                id="phone">
+                            <input type="tel" id="phone">
                         </div>
 
                     </div>
@@ -396,26 +301,18 @@ d
                         <div class="form-group">
                             <label>WhatsApp Number</label>
 
-                            <input
-                                type="tel"
-                                id="whatsapp">
+                            <input type="tel" id="whatsapp">
                         </div>
 
                         <div class="form-group">
                             <label>Email</label>
 
-                            <input
-                                type="email"
-                                id="email">
+                            <input type="email" id="email">
                         </div>
 
                     </div>
 
                 </section>
-
-                <!-- ===================================================
-                     IMAGES
-                ==================================================== -->
                 <section class="form-section">
 
                     <h3>Property Images</h3>
@@ -428,13 +325,9 @@ d
                                 Cover Image
                             </label>
 
-                            <input
-                                type="file"
-                                id="coverImage"
-                                accept="image/*">
+                            <input type="file" id="coverImage" accept="image/*">
 
-                            <div id="coverPreview"
-                                class="image-preview">
+                            <div id="coverPreview" class="image-preview">
                             </div>
 
                         </div>
@@ -445,14 +338,9 @@ d
                                 Gallery Images
                             </label>
 
-                            <input
-                                type="file"
-                                id="galleryImages"
-                                accept="image/*"
-                                multiple>
+                            <input type="file" id="galleryImages" accept="image/*" multiple>
 
-                            <div id="galleryPreview"
-                                class="gallery-preview">
+                            <div id="galleryPreview" class="gallery-preview">
                             </div>
 
                         </div>
@@ -460,36 +348,21 @@ d
                     </div>
 
                 </section>
-
-                <!-- ===================================================
-                     RESPONSIVE DEMO IMAGE
-                     (Practical Requirement II)
-                ==================================================== -->
                 <section class="form-section">
 
                     <h3>Preview Banner</h3>
 
-                    <img
-                        src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200"
-                        alt="Property"
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200" alt="Property"
                         class="responsive-image">
 
                 </section>
-
-                <!-- ===================================================
-                     BUTTONS
-                ==================================================== -->
                 <section class="button-section">
 
-                    <button
-                        type="submit"
-                        class="primary-btn">
+                    <button type="submit" class="primary-btn">
                         Save Property
                     </button>
 
-                    <button
-                        type="reset"
-                        class="danger-btn">
+                    <button type="reset" class="danger-btn">
                         Reset Form
                     </button>
 
@@ -500,9 +373,8 @@ d
         </section>
 
     </main>
-
-    <!-- JavaScript -->
     <script src="script.js"></script>
 
 </body>
+
 </html>

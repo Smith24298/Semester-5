@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Property - PG & Hostel Finder</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="add-property.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="bi bi-house-door-fill"></i>
+                <span>StayFinder</span>
+            </div>
+            <button class="sidebar-toggle d-lg-none" id="sidebarToggle" aria-label="Toggle sidebar">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html" data-page="dashboard">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="add-property.html" data-page="add-property">
+                        <i class="bi bi-plus-circle"></i>
+                        <span>Add Property</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-page="my-properties">
+                        <i class="bi bi-building"></i>
+                        <span>My Properties</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-page="settings">
+                        <i class="bi bi-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item mt-auto">
+                    <a class="nav-link text-danger" href="#" id="logoutBtn">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+            <div class="navbar-left">
+                <button class="hamburger-btn d-lg-none" id="hamburgerBtn" aria-label="Toggle menu">
+                    <i class="bi bi-list"></i>
+                </button>
+                <h1 class="page-title" id="pageTitle">Add New Property</h1>
+            </div>
+            <div class="navbar-right">
+                <!-- Profile -->
+                <div class="profile-wrapper">
+                    <button class="profile-btn" id="profileBtn" aria-label="Profile menu">
+                        <div class="avatar">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                        <div class="profile-info d-none d-md-block">
+                            <span class="profile-name">John Owner</span>
+                            <span class="profile-role">Property Owner</span>
+                        </div>
+                        <i class="bi bi-chevron-down d-none d-md-inline"></i>
+                    </button>
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <div class="profile-header">
+                            <div class="avatar lg">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">John Owner</h6>
+                                <small class="text-muted">john@example.com</small>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item"><i class="bi bi-person"></i> My Profile</a>
+                        <a href="#" class="dropdown-item"><i class="bi bi-gear"></i> Settings</a>
+                        <a href="#" class="dropdown-item"><i class="bi bi-shield-lock"></i> Security</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item text-danger" id="logoutDropdown"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <div class="content-area">
+            <!-- Form Header -->
+            <div class="form-header">
+                <div class="header-content">
+                    <h2 id="formHeading">Add New Property</h2>
+                    <p class="text-muted mb-0">Fill in the details below to list your property</p>
+                </div>
+                <a href="dashboard.html" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Back to Dashboard
+                </a>
+            </div>
+
+            <!-- Property Form -->
+            <form class="property-form" id="propertyForm" novalidate>
+                <!-- Property Basic Info -->
+                <div class="form-section">
+                    <h5 class="section-title"><i class="bi bi-info-circle"></i> Basic Information</h5>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="propertyName" class="form-label">Property Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="propertyName" name="propertyName" placeholder="e.g., Sunrise PG for Boys" required>
+                            <div class="invalid-feedback">Please enter a property name</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="propertyType" class="form-label">Property Type <span class="text-danger">*</span></label>
+                            <select class="form-select" id="propertyType" name="propertyType" required>
+                                <option value="">Select Property Type</option>
+                                <option value="PG">PG</option>
+                                <option value="Hostel">Hostel</option>
+                                <option value="Apartment">Apartment</option>
+                            </select>
+                            <div class="invalid-feedback">Please select a property type</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="roomType" class="form-label">Room Type <span class="text-danger">*</span></label>
+                            <select class="form-select" id="roomType" name="roomType" required>
+                                <option value="">Select Room Type</option>
+                                <option value="Single">Single</option>
+                                <option value="Double">Double</option>
+                                <option value="Triple">Triple</option>
+                                <option value="Dormitory">Dormitory</option>
+                            </select>
+                            <div class="invalid-feedback">Please select a room type</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
+                            <select class="form-select" id="gender" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="Boys">Boys</option>
+                                <option value="Girls">Girls</option>
+                                <option value="Unisex">Unisex</option>
+                            </select>
+                            <div class="invalid-feedback">Please select gender preference</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Details -->
+                <div class="form-section">
+                    <h5 class="section-title"><i class="bi bi-geo-alt"></i> Location Details</h5>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="city" class="form-label">City <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="city" name="city" placeholder="e.g., Bangalore" required>
+                            <div class="invalid-feedback">Please enter city</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="state" class="form-label">State <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="state" name="state" placeholder="e.g., Karnataka" required>
+                            <div class="invalid-feedback">Please enter state</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="pincode" class="form-label">Pincode <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="pincode" name="pincode" placeholder="e.g., 560001" pattern="[0-9]{6}" required>
+                            <div class="invalid-feedback">Please enter valid 6-digit pincode</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="location" class="form-label">Area/Locality <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="location" name="location" placeholder="e.g., Koramangala" required>
+                            <div class="invalid-feedback">Please enter area/locality</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Complete Address <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="address" name="address" rows="2" placeholder="Full address with landmarks" required></textarea>
+                        <div class="invalid-feedback">Please enter complete address</div>
+                    </div>
+                </div>
+
+                <!-- Pricing & Availability -->
+                <div class="form-section">
+                    <h5 class="section-title"><i class="bi bi-currency-rupee"></i> Pricing & Availability</h5>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="rent" class="form-label">Monthly Rent (₹) <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="rent" name="rent" placeholder="e.g., 15000" min="0" step="100" required>
+                            <div class="invalid-feedback">Please enter monthly rent</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="deposit" class="form-label">Security Deposit (₹) <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="deposit" name="deposit" placeholder="e.g., 30000" min="0" step="100" required>
+                            <div class="invalid-feedback">Please enter security deposit</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="rooms" class="form-label">Available Rooms <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="rooms" name="rooms" placeholder="e.g., 10" min="1" required>
+                            <div class="invalid-feedback">Please enter number of rooms</div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="availability" class="form-label">Availability <span class="text-danger">*</span></label>
+                            <select class="form-select" id="availability" name="availability" required>
+                                <option value="Available">Available</option>
+                                <option value="Occupied">Occupied</option>
+                                <option value="Pending">Pending</option>
+                            </select>
+                            <div class="invalid-feedback">Please select availability</div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="rating" class="form-label">Rating</label>
+                            <select class="form-select" id="rating" name="rating">
+                                <option value="4.5">4.5 ★★★★☆</option>
+                                <option value="4.0">4.0 ★★★★☆</option>
+                                <option value="3.5">3.5 ★★★☆☆</option>
+                                <option value="3.0">3.0 ★★★☆☆</option>
+                                <option value="2.5">2.5 ★★☆☆☆</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Facilities -->
+                <div class="form-section">
+                    <h5 class="section-title"><i class="bi bi-tools"></i> Facilities</h5>
+                    <div class="facilities-grid">
+                        <div class="facility-item">
+                            <input type="checkbox" class="form-check-input" id="facilityWifi" name="facilities" value="WiFi">
+                            <label class="form-check-label" for="facilityWifi"><i class="bi bi-wifi"></i> WiFi</label>
+                        </div>
+                        <div class="facility-item">
+                            <input type="checkbox" class="form-check-input" id="facilityParking" name="facilities" value="Parking">
+                            <label class="form-check-label" for="facilityParking"><i class="bi bi-car-front"></i> Parking</label>
+                        </div>
+                        <div class="facility-item">
+                            <input type="checkbox" class="form-check-input" id="facilityAC" name="facilities" value="AC">
+                            <label class="form-check-label" for="facilityAC"><i class="bi bi-snow"></i> AC</label>
+                        </div>
+                        <div class="facility-item">
+                            <input type="checkbox" class="form-check-input" id="facilityLaundry" name="facilities" value="Laundry">
+                            <label class="form-check-label" for="facilityLaundry"><i class="bi bi-water"></i> Laundry</label>
+                        </div>
+                        <div class="facility-item">
+                            <input type="checkbox" class="form-check-input" id="facilityMess" name="facilities" value="Mess">
+                            <label class="form-check-label" for="facilityMess"><i class="bi bi-cup-hot"></i> Mess</label>
+                        </div>
+                        <div class="facility-item">
+                            <input type="checkbox" class="form-check-input" id="facilityKitchen" name="facilities" value="Kitchen">
+                            <label class="form-check-label" for="facilityKitchen"><i class="bi bi-stove"></i> Kitchen</label>
+                        </div>
+                        <div class="facility-item">
+                            <input type="checkbox" class="form-check-input" id="facilityPowerBackup" name="facilities" value="Power Backup">
+                            <label class="form-check-label" for="facilityPowerBackup"><i class="bi bi-lightning-charge"></i> Power Backup</label>
+                        </div>
+                        <div class="facility-item">
+                            <input type="checkbox" class="form-check-input" id="facilityCCTV" name="facilities" value="CCTV">
+                            <label class="form-check-label" for="facilityCCTV"><i class="bi bi-camera-video"></i> CCTV</label>
+                        </div>
+                        <div class="facility-item">
+                            <input type="checkbox" class="form-check-input" id="facilityROWater" name="facilities" value="RO Water">
+                            <label class="form-check-label" for="facilityROWater"><i class="bi bi-droplet"></i> RO Water</label>
+                        </div>
+                        <div class="facility-item">
+                            <input type="checkbox" class="form-check-input" id="facilityLift" name="facilities" value="Lift">
+                            <label class="form-check-label" for="facilityLift"><i class="bi bi-arrow-up-down"></i> Lift</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Upload -->
+                <div class="form-section">
+                    <h5 class="section-title"><i class="bi bi-image"></i> Property Image</h5>
+                    <div class="image-upload-wrapper">
+                        <div class="image-preview" id="imagePreview">
+                            <i class="bi bi-image-plus upload-icon"></i>
+                            <p class="mb-0">Click or drag to upload property image</p>
+                            <small class="text-muted">JPG, PNG up to 5MB</small>
+                        </div>
+                        <input type="file" class="d-none" id="propertyImage" name="propertyImage" accept="image/*">
+                        <button type="button" class="btn btn-outline-primary btn-upload" id="uploadBtn">
+                            <i class="bi bi-cloud-upload"></i> Choose Image
+                        </button>
+                        <div class="image-preview-container d-none" id="imagePreviewContainer">
+                            <img id="previewImg" src="" alt="Property preview">
+                            <button type="button" class="btn-remove-image" id="removeImage" aria-label="Remove image">
+                                <i class="bi bi-x"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="form-section">
+                    <h5 class="section-title"><i class="bi bi-card-text"></i> Description</h5>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Property Description <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="description" name="description" rows="4" placeholder="Describe your property - nearby landmarks, facilities, rules, etc." required></textarea>
+                        <div class="invalid-feedback">Please enter a description</div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="form-section">
+                    <h5 class="section-title"><i class="bi bi-telephone"></i> Contact Information</h5>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="phone" class="form-label">Contact Number <span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="+91 98765 43210" pattern="[+]?[(]?[0-9]{1,3}[)]?[-\s.]?[(]?[0-9]{1,3}[)]?[-\s.]?[0-9]{4,6}" required>
+                            <div class="invalid-feedback">Please enter valid contact number</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">Owner Email <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="owner@example.com" required>
+                            <div class="invalid-feedback">Please enter valid email</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mapLink" class="form-label">Google Maps Link</label>
+                        <input type="url" class="form-control" id="mapLink" name="mapLink" placeholder="https://maps.google.com/...">
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <a href="dashboard.html" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <i class="bi bi-save"></i> <span id="submitText">Save Property</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="add-property.js"></script>
+</body>
+</html>

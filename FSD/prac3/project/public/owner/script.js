@@ -1,13 +1,3 @@
-/* ==========================================================
-   PG & Hostel Finder
-   Owner Dashboard
-   script.js
-========================================================== */
-
-/* ==========================================================
-   DOM ELEMENTS
-========================================================== */
-
 const propertyForm = document.getElementById("propertyForm");
 
 const addAmenityBtn = document.getElementById("addAmenityBtn");
@@ -22,10 +12,6 @@ const galleryImages = document.getElementById("galleryImages");
 const coverPreview = document.getElementById("coverPreview");
 const galleryPreview = document.getElementById("galleryPreview");
 
-
-/* ==========================================================
-   ADD AMENITY
-========================================================== */
 
 addAmenityBtn.addEventListener("click", () => {
 
@@ -50,10 +36,6 @@ addAmenityBtn.addEventListener("click", () => {
 });
 
 
-/* ==========================================================
-   ADD RULE
-========================================================== */
-
 addRuleBtn.addEventListener("click", () => {
 
     const row = document.createElement("div");
@@ -76,11 +58,6 @@ addRuleBtn.addEventListener("click", () => {
 
 });
 
-
-/* ==========================================================
-   REMOVE BUTTON
-========================================================== */
-
 document.addEventListener("click", (event) => {
 
     if(event.target.classList.contains("remove-btn")){
@@ -91,10 +68,6 @@ document.addEventListener("click", (event) => {
 
 });
 
-
-/* ==========================================================
-   COVER IMAGE PREVIEW
-========================================================== */
 
 coverImage.addEventListener("change", function(){
 
@@ -113,10 +86,6 @@ coverImage.addEventListener("change", function(){
 });
 
 
-/* ==========================================================
-   GALLERY IMAGE PREVIEW
-========================================================== */
-
 galleryImages.addEventListener("change", function(){
 
     galleryPreview.innerHTML = "";
@@ -133,10 +102,6 @@ galleryImages.addEventListener("change", function(){
 
 });
 
-
-/* ==========================================================
-   VALIDATION
-========================================================== */
 
 function validateForm(){
 
@@ -212,10 +177,6 @@ function validateForm(){
 }
 
 
-/* ==========================================================
-   COLLECT AMENITIES
-========================================================== */
-
 function getAmenities(){
 
     const amenities = [];
@@ -237,10 +198,6 @@ function getAmenities(){
 }
 
 
-/* ==========================================================
-   COLLECT RULES
-========================================================== */
-
 function getRules(){
 
     const rules = [];
@@ -261,10 +218,6 @@ function getRules(){
 
 }
 
-
-/* ==========================================================
-   FORM SUBMIT
-========================================================== */
 
 propertyForm.addEventListener("submit", async(event)=>{
 
@@ -373,24 +326,6 @@ propertyForm.addEventListener("submit", async(event)=>{
 
     console.log(propertyData);
 
-    /*
-    =======================================================
-        Backend Integration
-    =======================================================
-
-    await fetch("http://localhost:3000/api/property",{
-
-        method:"POST",
-
-        headers:{
-            "Content-Type":"application/json"
-        },
-
-        body:JSON.stringify(propertyData)
-
-    });
-
-    */
 
     alert("Property data collected successfully!");
 
@@ -412,46 +347,3 @@ propertyForm.addEventListener("reset",()=>{
     },100);
 
 });
-
-
-/* ==========================================================
-   OPTIONAL:
-   PRELOAD COMMON AMENITIES
-========================================================== */
-
-// Uncomment if you want default amenities
-
-/*
-const defaultAmenities = [
-
-    "WiFi",
-    "Food",
-    "Laundry",
-    "Parking"
-
-];
-
-amenitiesContainer.innerHTML = "";
-
-defaultAmenities.forEach(item=>{
-
-    const row = document.createElement("div");
-
-    row.className = "dynamic-row";
-
-    row.innerHTML = `
-        <input
-            type="text"
-            value="${item}">
-
-        <button
-            type="button"
-            class="remove-btn">
-            Remove
-        </button>
-    `;
-
-    amenitiesContainer.appendChild(row);
-
-});
-*/

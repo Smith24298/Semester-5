@@ -2,8 +2,8 @@ global main
 extern printf
 
 section .data
-    a db 20
-    b db 5
+    a db 20h
+    b db 50h
 
     fmtAdd  db "ADD  : %d",10,0
     fmtSub  db "SUB  : %d",10,0
@@ -20,7 +20,7 @@ section .data
 section .text
 
 main:
-    mov ebp, esp; for correct debugging
+    mov ebp, esp
     mov al, [a]
     add al, [b]
     movzx eax, al

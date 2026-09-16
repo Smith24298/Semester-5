@@ -1,0 +1,12 @@
+in two terminal run 
+
+docker exec -it stopwait-c bash
+
+in one terminal
+
+cd /app
+./sender 127.0.0.1 5000 0 0
+
+in another terminal
+
+./receiver 5000 0 0

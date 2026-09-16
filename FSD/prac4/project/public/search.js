@@ -397,6 +397,9 @@ function renderAll() {
 
     if (state.view === "wishlist") {
         list = properties.filter(p => wishlist.includes(p.id));
+    } else {
+        // Only show properties that are marked as available for booking
+        list = list.filter(p => (p.availability || "available") === "available");
     }
 
     if (state.gender !== "all") {

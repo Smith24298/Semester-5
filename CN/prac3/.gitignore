@@ -1,0 +1,5 @@
+*.o
+sender
+receiver
+sender.exe
+receiver.exe

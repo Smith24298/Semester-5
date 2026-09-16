@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard | PG & Hostel Finder</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="#" class="logo d-flex align-items-center text-decoration-none">
+                <i class="bi bi-building-fill me-2 fs-3"></i>
+                <span class="fw-bold fs-4">PG Finder</span>
+            </a>
+        </div>
+        <nav class="sidebar-nav">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" data-page="dashboard">
+                        <i class="bi bi-speedometer2 me-2"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="add-property.html">
+                        <i class="bi bi-plus-circle me-2"></i>
+                        Add Property
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-page="properties">
+                        <i class="bi bi-house-door me-2"></i>
+                        My Properties
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">
+                        <i class="bi bi-search me-2"></i>
+                        Search PG
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-gear me-2"></i>
+                        Settings
+                    </a>
+                </li>
+                <li class="nav-item mt-auto">
+                    <a class="nav-link text-danger" href="#">
+                        <i class="bi bi-box-arrow-right me-2"></i>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+            <div class="d-flex align-items-center justify-content-between">
+                <button class="btn btn-icon d-lg-none" id="sidebarToggle" aria-label="Toggle Sidebar">
+                    <i class="bi bi-list fs-4"></i>
+                </button>
+                <div class="welcome-message d-none d-md-block">
+                    <h5 class="mb-0">Welcome back, <span class="text-primary" id="ownerName">Owner</span></h5>
+                    <small class="text-muted">Manage your properties efficiently</small>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Search Bar -->
+                    <div class="search-box d-none d-md-flex">
+                        <i class="bi bi-search search-icon"></i>
+                        <input type="text" class="form-control form-control-sm" id="searchInput"
+                            placeholder="Search properties..." aria-label="Search properties">
+                    </div>
+                    <!-- Notification -->
+                    <button class="btn btn-icon position-relative" id="notificationBtn" aria-label="Notifications">
+                        <i class="bi bi-bell fs-5"></i>
+                        <span class="badge bg-danger notification-badge">3</span>
+                    </button>
+                    <!-- Profile Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn d-flex align-items-center gap-2 p-0 border-0 bg-transparent"
+                            id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="avatar">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <span class="d-none d-sm-inline fw-medium" id="profileName">John Doe</span>
+                            <i class="bi bi-chevron-down d-none d-sm-inline"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-lg rounded-3 border-0"
+                            aria-labelledby="profileDropdown">
+                            <li>
+                                <h6 class="dropdown-header">Account</h6>
+                            </li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item text-danger" href="#"><i
+                                        class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content" id="pageContent">
+            <!-- Dashboard Page -->
+            <section class="page active" id="dashboardPage">
+                <!-- Stats Cards -->
+                <div class="row g-4 mb-4" id="statsContainer">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="stat-card">
+                            <div class="stat-icon bg-primary-light">
+                                <i class="bi bi-house-door-fill"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 class="stat-value" id="totalProperties">0</h3>
+                                <p class="stat-label">Total Properties</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="stat-card">
+                            <div class="stat-icon bg-success-light">
+                                <i class="bi bi-check-circle-fill"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 class="stat-value" id="availableProperties">0</h3>
+                                <p class="stat-label">Available</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="stat-card">
+                            <div class="stat-icon bg-warning-light">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 class="stat-value" id="occupiedProperties">0</h3>
+                                <p class="stat-label">Occupied</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="stat-card">
+                            <div class="stat-icon bg-info-light">
+                                <i class="bi bi-clock-history"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 class="stat-value" id="pendingProperties">0</h3>
+                                <p class="stat-label">Pending Verification</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Properties Section -->
+                <div
+                    class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
+                    <div>
+                        <h2 class="section-title mb-0">My Properties</h2>
+                        <p class="text-muted mb-0">Manage all your listed properties</p>
+                    </div>
+                    <div class="d-flex gap-2 flex-wrap" id="filterControls">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-funnel me-1"></i> Filter: <span id="currentFilter">All</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item filter-option active" data-filter="all" href="#">All
+                                        Properties</a></li>
+                                <li><a class="dropdown-item filter-option" data-filter="available"
+                                        href="#">Available</a></li>
+                                <li><a class="dropdown-item filter-option" data-filter="occupied" href="#">Occupied</a>
+                                </li>
+                                <li><a class="dropdown-item filter-option" data-filter="pending" href="#">Pending</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-arrow-up-down me-1"></i> Sort: <span id="currentSort">Newest</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item sort-option active" data-sort="newest" href="#">Newest
+                                        First</a></li>
+                                <li><a class="dropdown-item sort-option" data-sort="oldest" href="#">Oldest First</a>
+                                </li>
+                                <li><a class="dropdown-item sort-option" data-sort="rent-low" href="#">Rent: Low to
+                                        High</a></li>
+                                <li><a class="dropdown-item sort-option" data-sort="rent-high" href="#">Rent: High to
+                                        Low</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Availability Board -->
+                <div class="availability-board" id="propertiesGrid">
+                    <section class="availability-zone" data-availability="available"
+                        aria-labelledby="availableZoneTitle">
+                        <div class="availability-zone-header">
+                            <div>
+                                <h3 class="availability-zone-title" id="availableZoneTitle">Available</h3>
+                                <p class="availability-zone-hint">Properties ready for bookings</p>
+                            </div>
+                            <span class="availability-zone-count" id="availableZoneCount">0</span>
+                        </div>
+                        <div class="row g-4 availability-zone-grid" data-zone-grid="available"></div>
+                    </section>
+                    <section class="availability-zone" data-availability="occupied"
+                        aria-labelledby="notAvailableZoneTitle">
+                        <div class="availability-zone-header">
+                            <div>
+                                <h3 class="availability-zone-title" id="notAvailableZoneTitle">Not Available</h3>
+                                <p class="availability-zone-hint">Occupied or pending properties</p>
+                            </div>
+                            <span class="availability-zone-count" id="notAvailableZoneCount">0</span>
+                        </div>
+                        <div class="row g-4 availability-zone-grid" data-zone-grid="occupied"></div>
+                    </section>
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Property pagination" class="mt-4" id="paginationContainer">
+                    <ul class="pagination justify-content-center" id="pagination">
+                        <!-- Pagination will be rendered here -->
+                    </ul>
+                </nav>
+
+                <!-- Empty State -->
+                <div class="empty-state text-center py-5 d-none" id="emptyState">
+                    <div class="empty-icon mb-3">
+                        <i class="bi bi-house-door fs-1 text-muted"></i>
+                    </div>
+                    <h4 class="mb-2">No Properties Added Yet</h4>
+                    <p class="text-muted mb-4">Get started by adding your first property listing</p>
+                    <a href="add-property.html" class="btn btn-primary btn-lg">
+                        <i class="bi bi-plus-circle me-2"></i>Add Your First Property
+                    </a>
+                </div>
+            </section>
+
+            <!-- Properties Page (Alternative View) -->
+            <section class="page" id="propertiesPage">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="section-title mb-0">All Properties</h2>
+                    <a href="add-property.html" class="btn btn-primary">
+                        <i class="bi bi-plus me-2"></i>Add Property
+                    </a>
+                </div>
+                <div class="availability-board" id="propertiesGridAlt">
+                    <section class="availability-zone" data-availability="available"
+                        aria-labelledby="availableAltZoneTitle">
+                        <div class="availability-zone-header">
+                            <div>
+                                <h3 class="availability-zone-title" id="availableAltZoneTitle">Available</h3>
+                                <p class="availability-zone-hint">Properties ready for bookings</p>
+                            </div>
+                            <span class="availability-zone-count">0</span>
+                        </div>
+                        <div class="row g-4 availability-zone-grid" data-zone-grid="available"></div>
+                    </section>
+                    <section class="availability-zone" data-availability="occupied"
+                        aria-labelledby="notAvailableAltZoneTitle">
+                        <div class="availability-zone-header">
+                            <div>
+                                <h3 class="availability-zone-title" id="notAvailableAltZoneTitle">Not Available</h3>
+                                <p class="availability-zone-hint">Occupied or pending properties</p>
+                            </div>
+                            <span class="availability-zone-count">0</span>
+                        </div>
+                        <div class="row g-4 availability-zone-grid" data-zone-grid="occupied"></div>
+                    </section>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Floating Add Property Button -->
+    <a href="add-property.html" class="fab" id="fab" aria-label="Add New Property">
+        <i class="bi bi-plus fs-3"></i>
+    </a>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0 shadow-lg">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-0">Are you sure you want to delete <strong id="deletePropertyName"></strong>? This
+                        action cannot be undone.</p>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete Property</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastContainer">
+        <!-- Toasts will be added here dynamically -->
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

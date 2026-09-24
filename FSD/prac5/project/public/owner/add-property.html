@@ -1,59 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Property | PG & Hostel Finder</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 CSS (local) -->
+    <link href="bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS v4 Browser CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="add-property.css">
 </head>
-<body>
+
+<body class="min-h-screen overflow-x-hidden">
     <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <a href="dashboard.html" class="logo d-flex align-items-center text-decoration-none">
-                <i class="bi bi-building-fill me-2 fs-3"></i>
+    <aside
+        class="sidebar fixed top-0 left-0 w-[260px] h-screen bg-slate-900 text-slate-300 z-[1050] flex flex-col transition-all duration-250 overflow-y-auto shadow-[0_16px_40px_rgba(15,23,42,0.14)]"
+        id="sidebar">
+        <div class="sidebar-header px-6 py-5 border-b border-slate-400/15">
+            <a href="dashboard.html"
+                class="logo d-flex align-items-center text-decoration-none text-white hover:text-teal-500 transition-all duration-250">
+                <i class="bi bi-building-fill me-2 fs-3 text-teal-500"></i>
                 <span class="fw-bold fs-4">PG Finder</span>
             </a>
         </div>
-        <nav class="sidebar-nav">
+        <nav class="sidebar-nav flex-1 py-4 flex flex-col">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard.html">
+                    <a class="nav-link text-slate-300 px-6 py-3 mx-3 my-[0.15rem] rounded-lg font-medium flex items-center transition-all duration-250 border-l-[3px] border-l-transparent hover:text-white hover:bg-slate-400/12 hover:translate-x-1"
+                        href="dashboard.html">
                         <i class="bi bi-speedometer2 me-2"></i>
                         Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="add-property.html">
+                    <a class="nav-link active text-white px-6 py-3 mx-3 my-[0.15rem] rounded-lg font-medium flex items-center transition-all duration-250 border-l-[3px] border-l-blue-600 bg-gradient-to-r from-blue-600/35 to-blue-600/12"
+                        href="add-property.html">
                         <i class="bi bi-plus-circle me-2"></i>
                         Add Property
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard.html#properties">
+                    <a class="nav-link text-slate-300 px-6 py-3 mx-3 my-[0.15rem] rounded-lg font-medium flex items-center transition-all duration-250 border-l-[3px] border-l-transparent hover:text-white hover:bg-slate-400/12 hover:translate-x-1"
+                        href="dashboard.html#properties">
                         <i class="bi bi-house-door me-2"></i>
                         My Properties
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../index.html">
+                    <a class="nav-link text-slate-300 px-6 py-3 mx-3 my-[0.15rem] rounded-lg font-medium flex items-center transition-all duration-250 border-l-[3px] border-l-transparent hover:text-white hover:bg-slate-400/12 hover:translate-x-1"
+                        href="../index.html">
                         <i class="bi bi-search me-2"></i>
                         Search PG
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link text-slate-300 px-6 py-3 mx-3 my-[0.15rem] rounded-lg font-medium flex items-center transition-all duration-250 border-l-[3px] border-l-transparent hover:text-white hover:bg-slate-400/12 hover:translate-x-1"
+                        href="#">
                         <i class="bi bi-gear me-2"></i>
                         Settings
                     </a>
                 </li>
                 <li class="nav-item mt-auto">
-                    <a class="nav-link text-danger" href="#">
+                    <a class="nav-link text-danger px-6 py-3 mx-3 my-[0.15rem] rounded-lg font-medium flex items-center transition-all duration-250 border-l-[3px] border-l-transparent hover:bg-red-500/15 hover:text-red-400"
+                        href="#">
                         <i class="bi bi-box-arrow-right me-2"></i>
                         Logout
                     </a>
@@ -63,39 +76,55 @@
     </aside>
 
     <!-- Sidebar Overlay for Mobile -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar-overlay fixed inset-0 bg-slate-900/55 z-[1040] opacity-0 invisible transition-all duration-250"
+        id="sidebarOverlay"></div>
 
     <!-- Main Content -->
-    <main class="main-content" id="mainContent">
+    <main class="main-content ml-[260px] min-h-screen flex flex-col transition-all duration-250" id="mainContent">
         <!-- Top Navbar -->
-        <header class="top-navbar">
+        <header
+            class="top-navbar bg-white/85 backdrop-blur-xl py-[0.9rem] px-[1.75rem] border-b border-slate-200 sticky top-0 z-[1020] shadow-[0_2px_6px_rgba(15,23,42,0.06)]">
             <div class="d-flex align-items-center justify-content-between">
-                <button class="btn btn-icon d-lg-none" id="sidebarToggle" aria-label="Toggle Sidebar">
+                <button
+                    class="btn btn-icon w-[42px] h-[42px] inline-flex items-center justify-center border border-slate-200 rounded-full bg-white text-slate-500 transition-all duration-250 hover:text-blue-600 hover:border-blue-600 hover:bg-blue-600/10 hover:-translate-y-0.5 hover:shadow-[0_2px_6px_rgba(15,23,42,0.06)] d-lg-none"
+                    id="sidebarToggle" aria-label="Toggle Sidebar">
                     <i class="bi bi-list fs-4"></i>
                 </button>
                 <div class="welcome-message d-none d-md-block">
-                    <h5 class="mb-0" id="pageTitle">Add New Property</h5>
-                    <small class="text-muted" id="pageSubtitle">Fill in the details to list your property</small>
+                    <h5 class="mb-0 font-bold" id="pageTitle">Add New Property</h5>
+                    <small class="text-slate-500 text-[0.85rem]" id="pageSubtitle">Fill in the details to list your
+                        property</small>
                 </div>
                 <div class="d-flex align-items-center gap-3">
-                    <button class="btn btn-icon position-relative" id="notificationBtn" aria-label="Notifications">
+                    <button
+                        class="btn btn-icon w-[42px] h-[42px] inline-flex items-center justify-center border border-slate-200 rounded-full bg-white text-slate-500 transition-all duration-250 hover:text-blue-600 hover:border-blue-600 hover:bg-blue-600/10 hover:-translate-y-0.5 hover:shadow-[0_2px_6px_rgba(15,23,42,0.06)] position-relative"
+                        id="notificationBtn" aria-label="Notifications">
                         <i class="bi bi-bell fs-5"></i>
-                        <span class="badge bg-danger notification-badge">3</span>
+                        <span
+                            class="badge bg-danger notification-badge absolute -top-1 -right-0.5 text-[0.6rem] px-2 py-1 rounded-full">3</span>
                     </button>
                     <div class="dropdown">
-                        <button class="btn d-flex align-items-center gap-2 p-0 border-0 bg-transparent" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <div class="avatar">
+                        <button class="btn d-flex align-items-center gap-2 p-0 border-0 bg-transparent"
+                            id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div
+                                class="avatar w-[38px] h-[38px] rounded-full bg-gradient-to-br from-blue-600 to-teal-500 text-white flex items-center justify-center text-[1.1rem]">
                                 <i class="bi bi-person-fill"></i>
                             </div>
                             <span class="d-none d-sm-inline fw-medium" id="profileName">John Doe</span>
                             <i class="bi bi-chevron-down d-none d-sm-inline"></i>
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-end shadow-lg rounded-3 border-0" aria-labelledby="profileDropdown">
-                            <li><h6 class="dropdown-header">Account</h6></li>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-lg rounded-3 border-0"
+                            aria-labelledby="profileDropdown">
+                            <li>
+                                <h6 class="dropdown-header">Account</h6>
+                            </li>
                             <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
                             <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item text-danger" href="#"><i
+                                        class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -103,261 +132,402 @@
         </header>
 
         <!-- Page Content -->
-        <div class="page-content">
+        <div class="page-content py-10 px-[1.75rem] flex-1">
             <div class="row justify-content-center">
                 <div class="col-xl-10 col-lg-11">
-                    <form id="propertyForm" class="property-form" novalidate>
+                    <form id="propertyForm"
+                        class="property-form bg-white/72 backdrop-blur-2xl border border-white/85 rounded-2xl p-10 shadow-[0_16px_40px_rgba(15,23,42,0.14)]"
+                        novalidate>
                         <!-- Form Header -->
-                        <div class="form-header">
-                            <h1 class="form-title" id="formTitle">Add New Property</h1>
-                            <p class="form-subtitle" id="formSubtitle">Fill in all the details to list your property on our platform</p>
+                        <div class="form-header text-center mb-7">
+                            <h1 class="form-title text-[clamp(1.9rem,4vw,2.6rem)] font-extrabold mb-1" id="formTitle">
+                                Add New Property</h1>
+                            <p class="form-subtitle text-slate-500 text-[1.02rem] mb-0" id="formSubtitle">Fill in all
+                                the details to list your property on
+                                our platform</p>
                         </div>
 
                         <!-- Progress Indicator -->
-                        <div class="form-progress mb-4" id="formProgress">
-                            <div class="progress-step active" data-step="1">
-                                <span class="step-number">1</span>
-                                <span class="step-label">Basic Info</span>
+                        <div class="form-progress mb-4 flex items-center justify-between gap-2 py-4 px-2 border-b border-slate-200"
+                            id="formProgress">
+                            <div class="progress-step active flex items-center gap-2 opacity-100 transition-all duration-250 cursor-default"
+                                data-step="1">
+                                <span
+                                    class="step-number w-[30px] h-[30px] shrink-0 rounded-full bg-gradient-to-br from-blue-600 to-teal-500 text-white text-[0.85rem] font-bold inline-flex items-center justify-center transition-all duration-250 shadow-[0_4px_12px_rgba(37,99,235,0.35)]">1</span>
+                                <span class="step-label text-[0.85rem] text-blue-600 font-semibold">Basic Info</span>
                             </div>
-                            <div class="progress-step" data-step="2">
-                                <span class="step-number">2</span>
-                                <span class="step-label">Location</span>
+                            <div class="progress-step flex items-center gap-2 opacity-45 transition-all duration-250 cursor-default"
+                                data-step="2">
+                                <span
+                                    class="step-number w-[30px] h-[30px] shrink-0 rounded-full bg-slate-200 text-slate-500 text-[0.85rem] font-bold inline-flex items-center justify-center transition-all duration-250">2</span>
+                                <span class="step-label text-[0.85rem] text-slate-500 font-medium">Location</span>
                             </div>
-                            <div class="progress-step" data-step="3">
-                                <span class="step-number">3</span>
-                                <span class="step-label">Details</span>
+                            <div class="progress-step flex items-center gap-2 opacity-45 transition-all duration-250 cursor-default"
+                                data-step="3">
+                                <span
+                                    class="step-number w-[30px] h-[30px] shrink-0 rounded-full bg-slate-200 text-slate-500 text-[0.85rem] font-bold inline-flex items-center justify-center transition-all duration-250">3</span>
+                                <span class="step-label text-[0.85rem] text-slate-500 font-medium">Details</span>
                             </div>
-                            <div class="progress-step" data-step="4">
-                                <span class="step-number">4</span>
-                                <span class="step-label">Facilities</span>
+                            <div class="progress-step flex items-center gap-2 opacity-45 transition-all duration-250 cursor-default"
+                                data-step="4">
+                                <span
+                                    class="step-number w-[30px] h-[30px] shrink-0 rounded-full bg-slate-200 text-slate-500 text-[0.85rem] font-bold inline-flex items-center justify-center transition-all duration-250">4</span>
+                                <span class="step-label text-[0.85rem] text-slate-500 font-medium">Facilities</span>
                             </div>
-                            <div class="progress-step" data-step="5">
-                                <span class="step-number">5</span>
-                                <span class="step-label">Contact</span>
+                            <div class="progress-step flex items-center gap-2 opacity-45 transition-all duration-250 cursor-default"
+                                data-step="5">
+                                <span
+                                    class="step-number w-[30px] h-[30px] shrink-0 rounded-full bg-slate-200 text-slate-500 text-[0.85rem] font-bold inline-flex items-center justify-center transition-all duration-250">5</span>
+                                <span class="step-label text-[0.85rem] text-slate-500 font-medium">Contact</span>
                             </div>
                         </div>
 
                         <!-- Section 1: Basic Information -->
-                        <fieldset class="form-section" data-section="1">
-                            <legend class="section-title">
-                                <i class="bi bi-info-circle me-2"></i>
+                        <fieldset class="form-section border-none py-7 m-0 border-b border-dashed border-slate-200"
+                            data-section="1">
+                            <legend
+                                class="section-title text-[1.2rem] font-bold text-slate-900 flex items-center p-0 mb-5 w-full">
+                                <i class="bi bi-info-circle me-2 text-blue-600"></i>
                                 Basic Information
                             </legend>
                             <div class="row g-3">
                                 <div class="col-md-8">
-                                    <label for="propertyName" class="form-label fw-medium">Property Name <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="propertyName" name="propertyName" placeholder="e.g., Green Valley PG" required>
-                                    <div class="invalid-feedback">Please enter a property name</div>
+                                    <label for="propertyName"
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Property
+                                        Name <span class="text-red-500">*</span></label>
+                                    <input type="text"
+                                        class="form-control border-[1.5px] border-slate-200 rounded-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                        id="propertyName" name="propertyName" placeholder="e.g., Green Valley PG"
+                                        required>
+                                    <div class="invalid-feedback text-[0.82rem]">Please enter a property name</div>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="propertyType" class="form-label fw-medium">Property Type <span class="text-danger">*</span></label>
-                                    <select class="form-select" id="propertyType" name="propertyType" required>
+                                    <label for="propertyType"
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Property
+                                        Type <span class="text-red-500">*</span></label>
+                                    <select
+                                        class="form-select border-[1.5px] border-slate-200 rounded-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                        id="propertyType" name="propertyType" required>
                                         <option value="">Select Type</option>
                                         <option value="pg">PG</option>
                                         <option value="hostel">Hostel</option>
                                         <option value="apartment">Apartment</option>
                                     </select>
-                                    <div class="invalid-feedback">Please select property type</div>
+                                    <div class="invalid-feedback text-[0.82rem]">Please select property type</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="roomType" class="form-label fw-medium">Room Type <span class="text-danger">*</span></label>
-                                    <select class="form-select" id="roomType" name="roomType" required>
+                                    <label for="roomType"
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Room
+                                        Type <span class="text-red-500">*</span></label>
+                                    <select
+                                        class="form-select border-[1.5px] border-slate-200 rounded-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                        id="roomType" name="roomType" required>
                                         <option value="">Select Room Type</option>
                                         <option value="single">Single Occupancy</option>
                                         <option value="double">Double Sharing</option>
                                         <option value="triple">Triple Sharing</option>
                                         <option value="dormitory">Dormitory</option>
                                     </select>
-                                    <div class="invalid-feedback">Please select room type</div>
+                                    <div class="invalid-feedback text-[0.82rem]">Please select room type</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="gender" class="form-label fw-medium">Gender <span class="text-danger">*</span></label>
-                                    <select class="form-select" id="gender" name="gender" required>
+                                    <label for="gender"
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Gender
+                                        <span class="text-red-500">*</span></label>
+                                    <select
+                                        class="form-select border-[1.5px] border-slate-200 rounded-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                        id="gender" name="gender" required>
                                         <option value="">Select Gender</option>
                                         <option value="boys">Boys</option>
                                         <option value="girls">Girls</option>
                                         <option value="unisex">Unisex</option>
                                     </select>
-                                    <div class="invalid-feedback">Please select gender preference</div>
+                                    <div class="invalid-feedback text-[0.82rem]">Please select gender preference</div>
                                 </div>
                             </div>
                         </fieldset>
 
                         <!-- Section 2: Location -->
-                        <fieldset class="form-section" data-section="2">
-                            <legend class="section-title">
-                                <i class="bi bi-geo-alt me-2"></i>
+                        <fieldset class="form-section border-none py-7 m-0 border-b border-dashed border-slate-200"
+                            data-section="2">
+                            <legend
+                                class="section-title text-[1.2rem] font-bold text-slate-900 flex items-center p-0 mb-5 w-full">
+                                <i class="bi bi-geo-alt me-2 text-blue-600"></i>
                                 Location Details
                             </legend>
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <label for="location" class="form-label fw-medium">Area/Locality <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="location" name="location" placeholder="e.g., Koramangala, Near Forum Mall" required>
-                                    <div class="invalid-feedback">Please enter location</div>
+                                    <label for="location"
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Area/Locality
+                                        <span class="text-red-500">*</span></label>
+                                    <input type="text"
+                                        class="form-control border-[1.5px] border-slate-200 rounded-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                        id="location" name="location" placeholder="e.g., Koramangala, Near Forum Mall"
+                                        required>
+                                    <div class="invalid-feedback text-[0.82rem]">Please enter location</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="city" class="form-label fw-medium">City <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="city" name="city" placeholder="e.g., Bangalore" required>
-                                    <div class="invalid-feedback">Please enter city</div>
+                                    <label for="city"
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">City
+                                        <span class="text-red-500">*</span></label>
+                                    <input type="text"
+                                        class="form-control border-[1.5px] border-slate-200 rounded-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                        id="city" name="city" placeholder="e.g., Bangalore" required>
+                                    <div class="invalid-feedback text-[0.82rem]">Please enter city</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="state" class="form-label fw-medium">State <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="state" name="state" placeholder="e.g., Karnataka" required>
-                                    <div class="invalid-feedback">Please enter state</div>
+                                    <label for="state"
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">State
+                                        <span class="text-red-500">*</span></label>
+                                    <input type="text"
+                                        class="form-control border-[1.5px] border-slate-200 rounded-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                        id="state" name="state" placeholder="e.g., Karnataka" required>
+                                    <div class="invalid-feedback text-[0.82rem]">Please enter state</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="pincode" class="form-label fw-medium">Pincode <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="pincode" name="pincode" placeholder="e.g., 560034" maxlength="6" pattern="[0-9]{6}" required>
-                                    <div class="invalid-feedback">Please enter valid 6-digit pincode</div>
+                                    <label for="pincode"
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Pincode
+                                        <span class="text-red-500">*</span></label>
+                                    <input type="text"
+                                        class="form-control border-[1.5px] border-slate-200 rounded-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                        id="pincode" name="pincode" placeholder="e.g., 560034" maxlength="6"
+                                        pattern="[0-9]{6}" required>
+                                    <div class="invalid-feedback text-[0.82rem]">Please enter valid 6-digit pincode
+                                    </div>
                                 </div>
                                 <div class="col-12">
-                                    <label for="address" class="form-label fw-medium">Complete Address <span class="text-danger">*</span></label>
-                                    <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter complete address with landmarks" required></textarea>
-                                    <div class="invalid-feedback">Please enter complete address</div>
+                                    <label for="address"
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Complete
+                                        Address <span class="text-red-500">*</span></label>
+                                    <textarea
+                                        class="form-control border-[1.5px] border-slate-200 rounded-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:-translate-y-px resize-y min-h-[100px]"
+                                        id="address" name="address" rows="3"
+                                        placeholder="Enter complete address with landmarks" required></textarea>
+                                    <div class="invalid-feedback text-[0.82rem]">Please enter complete address</div>
                                 </div>
                                 <div class="col-12">
-                                    <label for="mapLink" class="form-label fw-medium">Google Maps Link</label>
-                                    <input type="url" class="form-control" id="mapLink" name="mapLink" placeholder="https://maps.google.com/...">
-                                    <div class="form-text">Paste Google Maps link for exact location</div>
+                                    <label for="mapLink"
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Google
+                                        Maps Link</label>
+                                    <input type="url"
+                                        class="form-control border-[1.5px] border-slate-200 rounded-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                        id="mapLink" name="mapLink" placeholder="https://maps.google.com/...">
+                                    <div class="form-text text-slate-500 text-[0.82rem]">Paste Google Maps link for
+                                        exact location</div>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label fw-medium">Coordinates <small class="text-muted">(for Nearby PG search)</small></label>
+                                    <label
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Coordinates
+                                        <small class="text-slate-500">(for
+                                            Nearby PG search)</small></label>
                                     <div class="row g-3">
                                         <div class="col-md-4">
-                                            <label for="lat" class="form-label small text-muted">Latitude</label>
-                                            <input type="number" step="any" class="form-control" id="lat" name="lat" placeholder="e.g., 23.0442">
+                                            <label for="lat" class="form-label small text-slate-500">Latitude</label>
+                                            <input type="number" step="any"
+                                                class="form-control border-[1.5px] border-slate-200 rounded-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                                id="lat" name="lat" placeholder="e.g., 23.0442">
                                         </div>
                                         <div class="col-md-4">
-                                            <label for="lng" class="form-label small text-muted">Longitude</label>
-                                            <input type="number" step="any" class="form-control" id="lng" name="lng" placeholder="e.g., 72.5360">
+                                            <label for="lng" class="form-label small text-slate-500">Longitude</label>
+                                            <input type="number" step="any"
+                                                class="form-control border-[1.5px] border-slate-200 rounded-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                                id="lng" name="lng" placeholder="e.g., 72.5360">
                                         </div>
                                         <div class="col-md-4 d-flex align-items-end">
-                                            <button type="button" class="btn btn-outline-primary w-100" id="setLocationBtn">
+                                            <button type="button"
+                                                class="btn btn-outline-primary w-100 font-semibold rounded-lg transition-all duration-250 hover:-translate-y-0.5"
+                                                id="setLocationBtn">
                                                 <i class="bi bi-geo-alt-fill me-1"></i>Use My Location
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="form-text">Enables students to find this property in "Show Nearby PGs".</div>
+                                    <div class="form-text text-slate-500 text-[0.82rem]">Enables students to find this
+                                        property in "Show Nearby PGs".
+                                    </div>
                                 </div>
                             </div>
                         </fieldset>
 
                         <!-- Section 3: Property Details -->
-                        <fieldset class="form-section" data-section="3">
-                            <legend class="section-title">
-                                <i class="bi bi-house-door me-2"></i>
+                        <fieldset class="form-section border-none py-7 m-0 border-b border-dashed border-slate-200"
+                            data-section="3">
+                            <legend
+                                class="section-title text-[1.2rem] font-bold text-slate-900 flex items-center p-0 mb-5 w-full">
+                                <i class="bi bi-house-door me-2 text-blue-600"></i>
                                 Property Details
                             </legend>
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <label for="monthlyRent" class="form-label fw-medium">Monthly Rent (₹) <span class="text-danger">*</span></label>
+                                    <label for="monthlyRent"
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Monthly
+                                        Rent (₹) <span class="text-red-500">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text">₹</span>
-                                        <input type="number" class="form-control" id="monthlyRent" name="monthlyRent" placeholder="e.g., 12000" min="0" required>
+                                        <span
+                                            class="input-group-text bg-blue-600/8 border-[1.5px] border-slate-200 text-blue-600 rounded-l-lg">₹</span>
+                                        <input type="number"
+                                            class="form-control border-[1.5px] border-slate-200 border-l-0 rounded-r-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                            id="monthlyRent" name="monthlyRent" placeholder="e.g., 12000" min="0"
+                                            required>
                                     </div>
-                                    <div class="invalid-feedback">Please enter monthly rent</div>
+                                    <div class="invalid-feedback text-[0.82rem]">Please enter monthly rent</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="securityDeposit" class="form-label fw-medium">Security Deposit (₹) <span class="text-danger">*</span></label>
+                                    <label for="securityDeposit"
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Security
+                                        Deposit (₹) <span class="text-red-500">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text">₹</span>
-                                        <input type="number" class="form-control" id="securityDeposit" name="securityDeposit" placeholder="e.g., 24000" min="0" required>
+                                        <span
+                                            class="input-group-text bg-blue-600/8 border-[1.5px] border-slate-200 text-blue-600 rounded-l-lg">₹</span>
+                                        <input type="number"
+                                            class="form-control border-[1.5px] border-slate-200 border-l-0 rounded-r-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                            id="securityDeposit" name="securityDeposit" placeholder="e.g., 24000"
+                                            min="0" required>
                                     </div>
-                                    <div class="invalid-feedback">Please enter security deposit</div>
+                                    <div class="invalid-feedback text-[0.82rem]">Please enter security deposit</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="availableRooms" class="form-label fw-medium">Available Rooms <span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control" id="availableRooms" name="availableRooms" placeholder="e.g., 10" min="1" required>
-                                    <div class="invalid-feedback">Please enter number of rooms</div>
+                                    <label for="availableRooms"
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Available
+                                        Rooms <span class="text-red-500">*</span></label>
+                                    <input type="number"
+                                        class="form-control border-[1.5px] border-slate-200 rounded-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                        id="availableRooms" name="availableRooms" placeholder="e.g., 10" min="1"
+                                        required>
+                                    <div class="invalid-feedback text-[0.82rem]">Please enter number of rooms</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="availability" class="form-label fw-medium">Availability Status <span class="text-danger">*</span></label>
-                                    <select class="form-select" id="availability" name="availability" required>
+                                    <label for="availability"
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Availability
+                                        Status <span class="text-red-500">*</span></label>
+                                    <select
+                                        class="form-select border-[1.5px] border-slate-200 rounded-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                        id="availability" name="availability" required>
                                         <option value="available">Available</option>
                                         <option value="occupied">Occupied</option>
                                         <option value="pending">Pending Verification</option>
                                     </select>
-                                    <div class="invalid-feedback">Please select availability</div>
+                                    <div class="invalid-feedback text-[0.82rem]">Please select availability</div>
                                 </div>
                             </div>
-                            
+
                             <!-- Property Image Upload (Drag & Drop) -->
                             <div class="row g-3 mt-3">
                                 <div class="col-12">
-                                    <label class="form-label fw-medium">Property Images <span class="text-danger">*</span></label>
-                                    <div class="image-upload-area" id="imageUploadArea">
-                                        <input type="file" class="form-control d-none" id="propertyImages" name="propertyImages" accept="image/*" multiple>
+                                    <label
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Property
+                                        Images <span class="text-red-500">*</span></label>
+                                    <div class="image-upload-area relative border-2 border-dashed border-slate-200 rounded-xl bg-slate-50/60 py-10 px-6 text-center cursor-pointer transition-all duration-250 overflow-hidden hover:border-blue-600 hover:bg-blue-600/10"
+                                        id="imageUploadArea">
+                                        <input type="file" class="form-control d-none" id="propertyImages"
+                                            name="propertyImages" accept="image/*" multiple>
                                         <div class="upload-placeholder" id="uploadPlaceholder">
-                                            <div class="upload-icon-wrap">
+                                            <div
+                                                class="upload-icon-wrap w-[74px] h-[74px] mx-auto mb-3 rounded-full bg-blue-600/10 text-blue-600 flex items-center justify-center text-[2.2rem] transition-all duration-250 group-hover:from-blue-600 group-hover:to-teal-500">
                                                 <i class="bi bi-cloud-arrow-up"></i>
                                             </div>
-                                            <p class="mb-1 fw-medium upload-main-text">Drag Images Here</p>
-                                            <span class="upload-or">or</span>
-                                            <button type="button" class="btn btn-primary btn-sm upload-browse-btn" id="browseBtn">
+                                            <p class="mb-1 font-medium text-[1.1rem] text-slate-900 upload-main-text">
+                                                Drag Images Here</p>
+                                            <span
+                                                class="upload-or block text-slate-500 text-[0.8rem] my-[0.3rem]">or</span>
+                                            <button type="button"
+                                                class="btn btn-primary btn-sm upload-browse-btn rounded-full py-[0.45rem] px-[1.3rem] font-semibold bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700 hover:-translate-y-0.5 transition-all duration-250"
+                                                id="browseBtn">
                                                 <i class="bi bi-folder2-open me-1"></i>Click to Upload
                                             </button>
-                                            <small class="text-muted d-block mt-2">JPG, PNG up to 5MB each &middot; first image is the cover</small>
+                                            <small class="text-slate-500 d-block mt-2">JPG, PNG up to 5MB each &middot;
+                                                first image is the cover</small>
                                         </div>
-                                        <div class="gallery-preview d-none" id="galleryPreview"></div>
+                                        <div class="gallery-preview d-none grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-3"
+                                            id="galleryPreview"></div>
                                     </div>
-                                    <div class="invalid-feedback d-block" id="imageError">Please upload at least one property image</div>
+                                    <div class="invalid-feedback d-block text-red-500 text-[0.82rem] mt-[0.35rem]"
+                                        id="imageError">Please upload at least one
+                                        property image</div>
                                 </div>
                             </div>
 
                             <div class="col-12">
-                                <label for="description" class="form-label fw-medium">Description <span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="description" name="description" rows="4" placeholder="Describe your property, nearby amenities, rules, etc." required></textarea>
-                                <div class="invalid-feedback">Please enter a description</div>
+                                <label for="description"
+                                    class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Description
+                                    <span class="text-red-500">*</span></label>
+                                <textarea
+                                    class="form-control border-[1.5px] border-slate-200 rounded-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:-translate-y-px resize-y min-h-[100px]"
+                                    id="description" name="description" rows="4"
+                                    placeholder="Describe your property, nearby amenities, rules, etc."
+                                    required></textarea>
+                                <div class="invalid-feedback text-[0.82rem]">Please enter a description</div>
                             </div>
                         </fieldset>
 
                         <!-- Section 4: Facilities -->
-                        <fieldset class="form-section" data-section="4">
-                            <legend class="section-title">
-                                <i class="bi bi-check2-square me-2"></i>
+                        <fieldset class="form-section border-none py-7 m-0 border-b border-dashed border-slate-200"
+                            data-section="4">
+                            <legend
+                                class="section-title text-[1.2rem] font-bold text-slate-900 flex items-center p-0 mb-5 w-full">
+                                <i class="bi bi-check2-square me-2 text-blue-600"></i>
                                 Facilities & Amenities
                             </legend>
-                            <p class="text-muted mb-4">Select all facilities available at your property</p>
-                            <div class="row g-3" id="facilitiesGrid">
+                            <p class="text-slate-500 mb-4">Select all facilities available at your property</p>
+                            <div class="row g-3 flex flex-wrap gap-3" id="facilitiesGrid">
                                 <!-- Facilities will be rendered by JavaScript -->
                             </div>
                         </fieldset>
 
                         <!-- Section 5: Contact Information -->
-                        <fieldset class="form-section" data-section="5">
-                            <legend class="section-title">
-                                <i class="bi bi-telephone me-2"></i>
+                        <fieldset class="form-section border-none py-7 m-0 border-b border-dashed border-slate-200"
+                            data-section="5">
+                            <legend
+                                class="section-title text-[1.2rem] font-bold text-slate-900 flex items-center p-0 mb-5 w-full">
+                                <i class="bi bi-telephone me-2 text-blue-600"></i>
                                 Contact Information
                             </legend>
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <label for="contactNumber" class="form-label fw-medium">Contact Number <span class="text-danger">*</span></label>
+                                    <label for="contactNumber"
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Contact
+                                        Number <span class="text-red-500">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text"><i class="bi bi-phone"></i></span>
-                                        <input type="tel" class="form-control" id="contactNumber" name="contactNumber" placeholder="e.g., 9876543210" pattern="[0-9]{10}" maxlength="10" required>
+                                        <span
+                                            class="input-group-text bg-blue-600/8 border-[1.5px] border-slate-200 text-blue-600 rounded-l-lg"><i
+                                                class="bi bi-phone"></i></span>
+                                        <input type="tel"
+                                            class="form-control border-[1.5px] border-slate-200 border-l-0 rounded-r-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                            id="contactNumber" name="contactNumber" placeholder="e.g., 9876543210"
+                                            pattern="[0-9]{10}" maxlength="10" required>
                                     </div>
-                                    <div class="invalid-feedback">Please enter valid 10-digit number</div>
+                                    <div class="invalid-feedback text-[0.82rem]">Please enter valid 10-digit number
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="ownerEmail" class="form-label fw-medium">Owner Email <span class="text-danger">*</span></label>
+                                    <label for="ownerEmail"
+                                        class="form-label font-semibold text-[0.92rem] text-slate-900 mb-[0.45rem]">Owner
+                                        Email <span class="text-red-500">*</span></label>
                                     <div class="input-group">
-                                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                                        <input type="email" class="form-control" id="ownerEmail" name="ownerEmail" placeholder="owner@example.com" required>
+                                        <span
+                                            class="input-group-text bg-blue-600/8 border-[1.5px] border-slate-200 text-blue-600 rounded-l-lg"><i
+                                                class="bi bi-envelope"></i></span>
+                                        <input type="email"
+                                            class="form-control border-[1.5px] border-slate-200 border-l-0 rounded-r-lg py-[0.65rem] px-[0.9rem] bg-white/90 text-slate-900 text-[0.95rem] transition-all duration-250 shadow-[0_2px_6px_rgba(15,23,42,0.06)] placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:-translate-y-px"
+                                            id="ownerEmail" name="ownerEmail" placeholder="owner@example.com" required>
                                     </div>
-                                    <div class="invalid-feedback">Please enter valid email</div>
+                                    <div class="invalid-feedback text-[0.82rem]">Please enter valid email</div>
                                 </div>
                             </div>
                         </fieldset>
 
                         <!-- Form Actions -->
-                        <div class="form-actions">
-                            <a href="dashboard.html" class="btn btn-outline-secondary btn-lg">
+                        <div class="form-actions flex justify-end gap-[0.9rem] pt-7 flex-wrap">
+                            <a href="dashboard.html"
+                                class="btn btn-outline-secondary btn-lg rounded-full py-[0.7rem] px-[1.6rem] font-semibold border-slate-200 text-slate-500 transition-all duration-250 hover:bg-slate-50 hover:border-slate-500 hover:text-slate-900 hover:-translate-y-0.5 hover:shadow-[0_2px_6px_rgba(15,23,42,0.06)]">
                                 <i class="bi bi-x-lg me-2"></i>Cancel
                             </a>
-                            <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
+                            <button type="submit"
+                                class="btn btn-primary btn-lg rounded-full py-[0.7rem] px-[1.6rem] font-semibold bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700 hover:-translate-y-0.5 transition-all duration-250 shadow-[0_8px_20px_rgba(37,99,235,0.4)]"
+                                id="submitBtn">
                                 <i class="bi bi-save me-2"></i>
                                 <span id="submitBtnText">Save Property</span>
-                                <span class="spinner-border spinner-border-sm d-none" id="submitSpinner" role="status" aria-hidden="true"></span>
+                                <span class="spinner-border spinner-border-sm d-none" id="submitSpinner" role="status"
+                                    aria-hidden="true"></span>
                             </button>
                         </div>
                     </form>
@@ -367,13 +537,14 @@
     </main>
 
     <!-- Toast Container -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastContainer">
+    <div class="toast-container position-fixed bottom-0 end-0 p-3 z-[1080]" id="toastContainer">
         <!-- Toasts will be added here dynamically -->
     </div>
 
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap 5 JS (local) -->
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="add-property.js"></script>
 </body>
+
 </html>

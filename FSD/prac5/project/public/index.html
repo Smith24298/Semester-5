@@ -1,44 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search PG | PG & Hostel Finder</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 CSS (local) -->
+    <link href="owner/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS v4 Browser CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="search.css">
 </head>
-<body>
+
+<body class="m-0 min-h-screen overflow-x-hidden transition-[background,color] duration-300 ease-in-out"
+    style="font-family: 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text);">
 
     <!-- Top Navigation -->
-    <header class="site-nav">
+    <header class="site-nav sticky top-0 z-[1020] border-b backdrop-blur-[14px] -webkit-backdrop-blur-[14px]"
+        style="background: var(--nav-bg); border-color: var(--border);">
         <div class="container-fluid px-lg-4">
             <nav class="navbar navbar-expand-lg">
                 <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-                    <i class="bi bi-building-fill brand-icon"></i>
-                    <span class="fw-bold brand-text">PG Finder</span>
+                    <i class="bi bi-building-fill brand-icon text-[1.6rem]" style="color: var(--accent);"></i>
+                    <span class="fw-bold brand-text text-[1.3rem]" style="color: var(--text);">PG Finder</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.html"><i class="bi bi-search me-1"></i>Search PG</a>
+                            <a class="nav-link active font-semibold rounded-full py-[0.45rem] px-4 transition-all duration-250 ease-in-out text-white inline-flex items-center"
+                                href="index.html"
+                                style="background: linear-gradient(135deg, var(--primary), var(--accent));"><i
+                                    class="bi bi-search me-1"></i>Search PG</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" id="wishlistLink">
-                                <i class="bi bi-heart me-1"></i>My Wishlist <span class="wishlist-count" id="wishlistCount">0</span>
-                            </a>
+                            <a class="nav-link font-semibold text-slate-500 rounded-full py-[0.45rem] px-4 transition-all duration-250 ease-in-out inline-flex items-center"
+                                href="#" id="wishlistLink"><i class="bi bi-heart me-1"></i>My Wishlist <span
+                                    class="wishlist-count inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-white text-[0.72rem] font-bold bg-red-500"
+                                    id="wishlistCount">0</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="owner/dashboard.html"><i class="bi bi-person-badge me-1"></i>Owner Login</a>
+                            <a class="nav-link font-semibold text-slate-500 rounded-full py-[0.45rem] px-4 transition-all duration-250 ease-in-out inline-flex items-center"
+                                href="owner/dashboard.html"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <button class="btn theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+                            <a class="nav-link font-semibold text-slate-500 rounded-full py-[0.45rem] px-4 transition-all duration-250 ease-in-out inline-flex items-center"
+                                href="owner/add-property.html"><i class="bi bi-plus-circle me-1"></i>Add Property</a>
+                        </li>
+                        <li class="nav-item">
+                            <button
+                                class="btn theme-toggle w-[42px] h-[42px] inline-flex items-center justify-center rounded-full border transition-all duration-250 ease-in-out hover:-translate-y-0.5"
+                                id="themeToggle" type="button" aria-label="Toggle theme"
+                                style="border-color: var(--border); background: var(--card); color: var(--text); box-shadow: var(--shadow-sm);">
                                 <i class="bi bi-moon-stars" id="themeIcon"></i>
                             </button>
                         </li>
@@ -50,61 +69,100 @@
 
     <!-- Hero / Search Section -->
     <main>
-        <section class="hero">
+        <section class="hero py-[4.5rem_0_4rem] bg-fixed" style="background: var(--bg-hero);">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-8 col-lg-9">
                         <div class="hero-content text-center">
-                            <h1 class="hero-title">Find Your Perfect <span class="gradient-text">PG &amp; Hostel</span></h1>
-                            <p class="hero-subtitle">Search nearby accommodations, save your favourites and move in stress-free.</p>
+                            <h1 class="hero-title font-extrabold mb-3"
+                                style="font-size: clamp(2rem, 5vw, 3.2rem); color: var(--text);">Find Your Perfect <span
+                                    class="gradient-text bg-gradient-to-br from-blue-600 to-teal-500 bg-clip-text text-transparent">PG
+                                    &amp; Hostel</span></h1>
+                            <p class="hero-subtitle text-[1.1rem] mb-8" style="color: var(--text-muted);">Search nearby
+                                accommodations, save your favourites and move in stress-free.</p>
 
                             <!-- Search Card -->
-                            <div class="search-card">
-                                <div class="search-box d-flex">
-                                    <i class="bi bi-search search-icon"></i>
-                                    <input type="text" id="searchInput" class="form-control search-input"
-                                           placeholder="Search by PG name, area or city..." aria-label="Search PGs">
-                                    <button type="button" class="btn btn-primary btn-search" id="searchBtn">
+                            <div class="search-card border p-7 text-left backdrop-blur-[22px] -webkit-backdrop-blur-[22px] rounded-2xl"
+                                style="background: var(--card-glass); border-color: var(--border); box-shadow: var(--shadow-lg);">
+                                <div class="search-box d-flex border rounded-full p-[0.35rem] transition-all duration-250 ease-in-out focus-within:outline-none focus-within:ring-4"
+                                    style="background: var(--card); border-width: 1.5px; border-color: var(--border); box-shadow: var(--shadow-sm);">
+                                    <i class="bi bi-search search-icon self-center px-[0.9rem] text-[1.1rem]"
+                                        style="color: var(--text-muted);"></i>
+                                    <input type="text" id="searchInput"
+                                        class="form-control search-input border-0 shadow-none text-base py-[0.55rem] px-0 bg-transparent focus:border-0 focus:shadow-none focus:bg-transparent"
+                                        style="color: var(--text);" placeholder="Search by PG name, area or city..."
+                                        aria-label="Search PGs">
+                                    <button type="button"
+                                        class="btn btn-primary btn-search rounded-full py-[0.6rem] px-[1.6rem] font-semibold border-0 shrink-0 transition-all duration-250 ease-in-out hover:-translate-y-0.5"
+                                        id="searchBtn"
+                                        style="background: linear-gradient(135deg, var(--primary), var(--accent)); box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);">
                                         <i class="bi bi-search me-1"></i>Search
                                     </button>
                                 </div>
 
-                                <div class="search-actions">
-                                    <span class="divider-text">or</span>
-                                    <button type="button" class="btn btn-locate" id="locateBtn">
+                                <div class="search-actions flex items-center justify-center gap-4 mt-[1.1rem]">
+                                    <span class="divider-text text-[0.85rem]"
+                                        style="color: var(--text-muted);">or</span>
+                                    <button type="button"
+                                        class="btn btn-locate rounded-full py-[0.55rem] px-[1.4rem] font-semibold transition-all duration-250 ease-in-out hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-progress"
+                                        id="locateBtn"
+                                        style="border-width: 1.5px; border-color: var(--primary); color: var(--primary); background: var(--primary-light); box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);">
                                         <i class="bi bi-geo-alt-fill me-1"></i>
                                         <span id="locateBtnText">Use My Location</span>
                                     </button>
                                 </div>
 
+                                <div class="owner-shortcut mt-[1.2rem] text-center">
+                                    <a href="owner/dashboard.html"
+                                        class="btn inline-flex items-center gap-2 rounded-full py-[0.65rem] px-[1.75rem] font-semibold text-slate-600 border-[1.5px] border-slate-200 bg-white shadow-[0_4px_14px_rgba(15,23,42,0.08)] transition-all duration-250 ease-in-out hover:-translate-y-0.5 hover:text-white hover:border-teal-500 hover:bg-gradient-to-r hover:from-teal-500 hover:to-blue-600">
+                                        <i
+                                            class="bi bi-person-badge fs-5 text-teal-500 transition-colors duration-250 group-hover:text-white"></i>
+                                        I'm an Owner — Go to Dashboard
+                                    </a>
+                                </div>
+
                                 <!-- Location Result Panel -->
-                                <div class="location-panel d-none" id="locationPanel">
-                                    <div class="location-header">
-                                        <i class="bi bi-crosshair location-pulse"></i>
+                                <div class="location-panel d-none mt-[1.25rem] border p-5 rounded-xl" id="locationPanel"
+                                    style="border-color: var(--border); background: var(--card);">
+                                    <div class="location-header flex items-center gap-[0.6rem] mb-4 font-bold"
+                                        style="color: var(--accent);">
+                                        <i class="bi bi-crosshair location-pulse text-[1.1rem]"></i>
                                         <span class="location-title">Your Location</span>
                                     </div>
                                     <div class="row g-3 text-center">
                                         <div class="col-4">
-                                            <div class="coord-card">
-                                                <small class="coord-label">Latitude</small>
-                                                <strong class="coord-value" id="latValue">--</strong>
+                                            <div class="coord-card border rounded-lg py-[0.85rem] px-2 flex flex-col gap-[0.2rem]"
+                                                style="background: var(--bg); border-color: var(--border);">
+                                                <small class="coord-label text-[0.78rem] uppercase tracking-[0.04em]"
+                                                    style="color: var(--text-muted);">Latitude</small>
+                                                <strong class="coord-value text-[1.05rem] break-words"
+                                                    style="color: var(--primary);" id="latValue">--</strong>
                                             </div>
                                         </div>
                                         <div class="col-4">
-                                            <div class="coord-card">
-                                                <small class="coord-label">Longitude</small>
-                                                <strong class="coord-value" id="lngValue">--</strong>
+                                            <div class="coord-card border rounded-lg py-[0.85rem] px-2 flex flex-col gap-[0.2rem]"
+                                                style="background: var(--bg); border-color: var(--border);">
+                                                <small class="coord-label text-[0.78rem] uppercase tracking-[0.04em]"
+                                                    style="color: var(--text-muted);">Longitude</small>
+                                                <strong class="coord-value text-[1.05rem] break-words"
+                                                    style="color: var(--primary);" id="lngValue">--</strong>
                                             </div>
                                         </div>
                                         <div class="col-4">
-                                            <div class="coord-card">
-                                                <small class="coord-label">Current City</small>
-                                                <strong class="coord-value" id="cityValue">--</strong>
+                                            <div class="coord-card border rounded-lg py-[0.85rem] px-2 flex flex-col gap-[0.2rem]"
+                                                style="background: var(--bg); border-color: var(--border);">
+                                                <small class="coord-label text-[0.78rem] uppercase tracking-[0.04em]"
+                                                    style="color: var(--text-muted);">Current City</small>
+                                                <strong class="coord-value text-[1.05rem] break-words"
+                                                    style="color: var(--primary);" id="cityValue">--</strong>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="nearby-action mt-3">
-                                        <button type="button" class="btn btn-nearby w-100" id="nearbyBtn">
+                                        <button type="button"
+                                            class="btn btn-nearby w-100 rounded-full py-[0.6rem] px-[1.2rem] font-semibold border-0 transition-all duration-250 ease-in-out hover:-translate-y-0.5"
+                                            id="nearbyBtn"
+                                            style="background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);">
                                             <i class="bi bi-signpost-split me-1"></i>Show Nearby PGs
                                         </button>
                                     </div>
@@ -112,10 +170,13 @@
                             </div>
 
                             <!-- Recent Searches -->
-                            <div class="recent-searches d-none" id="recentSection">
-                                <span class="recent-label"><i class="bi bi-clock-history me-1"></i>Recent Searches:</span>
-                                <div class="recent-chips" id="recentChips"></div>
-                                <button type="button" class="btn btn-link btn-sm clear-recent" id="clearRecentBtn">Clear</button>
+                            <div class="recent-searches d-none mt-6 flex items-center justify-center flex-wrap gap-2"
+                                id="recentSection">
+                                <span class="recent-label text-[0.9rem]" style="color: var(--text-muted);"><i
+                                        class="bi bi-clock-history me-1"></i>Recent Searches:</span>
+                                <div class="recent-chips flex flex-wrap gap-2" id="recentChips"></div>
+                                <button type="button" class="btn btn-link btn-sm clear-recent text-[0.82rem]"
+                                    style="color: var(--text-muted);" id="clearRecentBtn">Clear</button>
                             </div>
                         </div>
                     </div>
@@ -124,19 +185,32 @@
         </section>
 
         <!-- Results Section -->
-        <section class="results-section">
+        <section class="results-section py-12">
             <div class="container">
                 <div class="results-header d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
                     <div>
-                        <h2 class="results-title" id="resultsTitle">Available PGs</h2>
+                        <h2 class="results-title font-extrabold" style="color: var(--text);" id="resultsTitle">Available
+                            PGs</h2>
                         <p class="text-muted mb-0" id="resultsSubtitle">Browse verified properties near you</p>
                     </div>
                     <div class="results-filter d-flex align-items-center gap-2" id="genderFilter">
                         <span class="text-muted small">Show:</span>
-                        <button type="button" class="chip-filter active" data-gender="all">All</button>
-                        <button type="button" class="chip-filter" data-gender="boys">Boys</button>
-                        <button type="button" class="chip-filter" data-gender="girls">Girls</button>
-                        <button type="button" class="chip-filter" data-gender="unisex">Unisex</button>
+                        <button type="button"
+                            class="chip-filter active border rounded-full py-[0.35rem] px-[0.95rem] text-[0.85rem] font-medium cursor-pointer transition-all duration-250 ease-in-out"
+                            data-gender="all"
+                            style="border-color: transparent; background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff;">All</button>
+                        <button type="button"
+                            class="chip-filter border rounded-full py-[0.35rem] px-[0.95rem] text-[0.85rem] font-medium cursor-pointer transition-all duration-250 ease-in-out"
+                            data-gender="boys"
+                            style="border-color: var(--border); background: var(--card); color: var(--text-muted);">Boys</button>
+                        <button type="button"
+                            class="chip-filter border rounded-full py-[0.35rem] px-[0.95rem] text-[0.85rem] font-medium cursor-pointer transition-all duration-250 ease-in-out"
+                            data-gender="girls"
+                            style="border-color: var(--border); background: var(--card); color: var(--text-muted);">Girls</button>
+                        <button type="button"
+                            class="chip-filter border rounded-full py-[0.35rem] px-[0.95rem] text-[0.85rem] font-medium cursor-pointer transition-all duration-250 ease-in-out"
+                            data-gender="unisex"
+                            style="border-color: var(--border); background: var(--card); color: var(--text-muted);">Unisex</button>
                     </div>
                 </div>
 
@@ -145,8 +219,9 @@
                 </div>
 
                 <!-- Empty State -->
-                <div class="empty-state text-center py-5 d-none" id="emptyState">
-                    <div class="empty-icon mb-3">
+                <div class="empty-state text-center py-5 d-none border rounded-2xl" id="emptyState"
+                    style="background: var(--card); border-style: dashed; border-color: var(--border); padding: 3.5rem 1.5rem !important;">
+                    <div class="empty-icon mb-3 opacity-60" style="color: var(--text-muted);">
                         <i class="bi bi-search-heart fs-1"></i>
                     </div>
                     <h4 class="mb-2" id="emptyTitle">No PGs Found</h4>
@@ -164,16 +239,20 @@
         </section>
     </main>
 
-    <footer class="site-footer text-center text-muted">
-        <p class="mb-0">PG &amp; Hostel Finder &copy; 2026 &middot; Made with <i class="bi bi-heart-fill text-danger"></i> for Full Stack Development Practical</p>
+    <footer class="site-footer text-center text-muted border-t py-6 text-[0.9rem]" style="border-color: var(--border);">
+        <p class="mb-0">PG &amp; Hostel Finder &copy; 2026 &middot; Made with <i
+                class="bi bi-heart-fill text-danger"></i> for Full Stack Development Practical</p>
     </footer>
 
     <!-- Toast Container -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastContainer"></div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3 z-[1080]" id="toastContainer"></div>
 
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap 5 JS (local) -->
+    <script src="owner/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="index.js"></script>
     <!-- Custom JS -->
     <script src="search.js"></script>
 </body>
+
 </html>

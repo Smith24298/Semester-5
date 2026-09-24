@@ -1,6 +1,8 @@
 /* ============================================================
    Add / Edit Property Page Styles
-   Glassmorphism form — Primary #2563EB | Accent #14B8A6
+   Tailwind v4 inlined — keep only: variables, scrollbar,
+   animations, complex :has selectors, JS-toggled class states,
+   responsive media rules, body gradient, sidebar overlay logic
    ============================================================ */
 
 :root {
@@ -32,22 +34,13 @@
 }
 
 /* ============ Base ============ */
-* {
-    box-sizing: border-box;
-}
 
 body {
     margin: 0;
     font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: linear-gradient(135deg, #EFF6FF 0%, var(--bg) 40%, #F0FDFA 100%);
+    background: linear-gradient(135deg, #EFF6FF 0%, #F8FAFC 40%, #F0FDFA 100%);
     background-attachment: fixed;
     color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-a {
-    text-decoration: none;
 }
 
 ::-webkit-scrollbar {
@@ -60,173 +53,19 @@ a {
     border-radius: 8px;
 }
 
-/* ============ Sidebar ============ */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: var(--sidebar-width);
-    height: 100vh;
-    background: var(--sidebar-bg);
-    color: var(--sidebar-text);
-    z-index: 1050;
-    display: flex;
-    flex-direction: column;
-    transition: var(--transition);
-    overflow-y: auto;
-    box-shadow: var(--shadow-lg);
+/* ============ Sidebar position + mobile overlay / open class toggles ============ */
+
+.sidebar-overlay.show {
+    opacity: 1;
+    visibility: visible;
 }
 
-.sidebar-header {
-    padding: 1.25rem 1.5rem;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
-}
+/* ============ Glass top-navbar (backdrop-blur-xl kept in inline, redundant safe) ============ */
+/* Already inlined — nothing to add here */
 
-.logo {
-    color: #FFFFFF;
-    transition: var(--transition);
-}
+/* ============ Glass property-form + formIn animation ============ */
 
-.logo:hover {
-    color: var(--accent);
-}
-
-.logo i {
-    color: var(--accent);
-}
-
-.sidebar-nav {
-    flex: 1;
-    padding: 1rem 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar-nav .nav-link {
-    color: var(--sidebar-text);
-    padding: 0.75rem 1.5rem;
-    margin: 0.15rem 0.75rem;
-    border-radius: var(--radius-sm);
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    transition: var(--transition);
-    border-left: 3px solid transparent;
-}
-
-.sidebar-nav .nav-link:hover {
-    color: #FFFFFF;
-    background: rgba(148, 163, 184, 0.12);
-    transform: translateX(4px);
-}
-
-.sidebar-nav .nav-link.active {
-    color: #FFFFFF;
-    background: linear-gradient(90deg, rgba(37, 99, 235, 0.35), rgba(37, 99, 235, 0.12));
-    border-left-color: var(--primary);
-}
-
-.sidebar-nav .nav-link.text-danger:hover {
-    background: rgba(239, 68, 68, 0.15);
-    color: #F87171;
-}
-
-.sidebar-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.55);
-    z-index: 1040;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
-}
-
-/* ============ Main Content / Top Navbar ============ */
-.main-content {
-    margin-left: var(--sidebar-width);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    transition: var(--transition);
-}
-
-.top-navbar {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    padding: 0.9rem 1.75rem;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 1020;
-    box-shadow: var(--shadow-sm);
-}
-
-.welcome-message h5 {
-    font-weight: 700;
-}
-
-.welcome-message small {
-    font-size: 0.85rem;
-}
-
-.btn-icon {
-    width: 42px;
-    height: 42px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    background: var(--card);
-    color: var(--text-muted);
-    transition: var(--transition);
-}
-
-.btn-icon:hover {
-    color: var(--primary);
-    border-color: var(--primary);
-    background: var(--primary-light);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
-}
-
-.notification-badge {
-    position: absolute;
-    top: -4px;
-    right: -2px;
-    font-size: 0.6rem;
-    padding: 0.25rem 0.45rem;
-    border-radius: 999px;
-}
-
-.avatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-}
-
-/* ============ Page Content ============ */
-.page-content {
-    padding: 2.5rem 1.75rem;
-    flex: 1;
-}
-
-/* ============ Glassmorphism Form ============ */
 .property-form {
-    background: rgba(255, 255, 255, 0.72);
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
-    border: 1px solid rgba(255, 255, 255, 0.85);
-    border-radius: var(--radius-lg);
-    padding: 2.5rem 2.75rem;
-    box-shadow: var(--shadow-lg);
     animation: formIn 0.5s ease;
 }
 
@@ -241,89 +80,18 @@ a {
     }
 }
 
-/* ============ Form Header ============ */
-.form-header {
-    text-align: center;
-    margin-bottom: 1.75rem;
-}
+/* ============ Form title gradient text (kept for safety) ============ */
 
 .form-title {
-    font-size: clamp(1.9rem, 4vw, 2.6rem);
-    font-weight: 800;
     background: linear-gradient(135deg, var(--primary), var(--accent));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 0.4rem;
 }
 
-.form-subtitle {
-    color: var(--text-muted);
-    font-size: 1.02rem;
-    margin-bottom: 0;
-}
+/* ============ Form sections fadeSection animation with data-section ============ */
 
-/* ============ Progress Steps ============ */
-.form-progress {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    padding: 1rem 0.5rem;
-    border-bottom: 1px solid var(--border);
-}
-
-.progress-step {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    opacity: 0.45;
-    transition: var(--transition);
-    cursor: default;
-}
-
-.progress-step.active {
-    opacity: 1;
-}
-
-.step-number {
-    width: 30px;
-    height: 30px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    background: var(--border);
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-}
-
-.progress-step.active .step-number {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
-}
-
-.progress-step.active .step-label {
-    color: var(--primary);
-    font-weight: 600;
-}
-
-.step-label {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    font-weight: 500;
-}
-
-/* ============ Form Sections ============ */
-.form-section {
-    border: none;
-    padding: 1.75rem 0;
-    margin: 0;
-    border-bottom: 1px dashed var(--border);
+.form-section[data-section] {
     animation: fadeSection 0.45s ease;
 }
 
@@ -338,105 +106,29 @@ a {
     }
 }
 
-.section-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    padding: 0;
-    margin-bottom: 1.25rem;
-    width: 100%;
-}
+/* ============ Progress step active states (JS toggles .active) ============ */
 
-.section-title i {
+.progress-step.active .step-label {
     color: var(--primary);
-}
-
-.form-label {
     font-weight: 600;
-    font-size: 0.92rem;
-    color: var(--text);
-    margin-bottom: 0.45rem;
 }
 
-/* ============ Inputs / Selects / Textarea ============ */
-.form-control,
-.form-select {
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 0.65rem 0.9rem;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: var(--text);
-    font-size: 0.95rem;
-    transition: var(--transition);
-    box-shadow: var(--shadow-sm);
-}
-
-.form-control::placeholder,
-.form-select::placeholder {
-    color: #94A3B8;
-}
+/* ============ Form controls custom focus ring (with shadow + translate) ============ */
 
 .form-control:focus,
 .form-select:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.15);
-    background-color: #fff;
+    box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.15) !important;
     transform: translateY(-1px);
+    outline: none;
 }
 
-textarea.form-control {
-    resize: vertical;
-    min-height: 100px;
-}
-
-/* Input groups */
-.input-group .input-group-text {
-    background: rgba(37, 99, 235, 0.08);
-    border: 1.5px solid var(--border);
-    color: var(--primary);
-    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
-}
-
-.input-group .form-control {
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-}
-
-.input-group-text + .form-control {
-    border-left: 0;
-}
+/* ============ Input-group focus-within border color ============ */
 
 .input-group:focus-within .input-group-text {
     border-color: var(--primary);
 }
 
-.form-text {
-    color: var(--text-muted);
-    font-size: 0.82rem;
-}
-
-.invalid-feedback {
-    font-size: 0.82rem;
-}
-
-/* ============ Image Upload Area (Drag & Drop) ============ */
-.image-upload-area {
-    position: relative;
-    border: 2px dashed var(--border);
-    border-radius: var(--radius-md);
-    background: rgba(248, 250, 252, 0.6);
-    padding: 2.5rem 1.5rem;
-    text-align: center;
-    cursor: pointer;
-    transition: var(--transition);
-    overflow: hidden;
-}
-
-.image-upload-area:hover {
-    border-color: var(--primary);
-    background: var(--primary-light);
-}
+/* ============ Image upload area: JS-toggled .dragover / .has-image classes ============ */
 
 .image-upload-area.dragover {
     border-color: var(--accent);
@@ -461,20 +153,6 @@ textarea.form-control {
     cursor: default;
 }
 
-.upload-icon-wrap {
-    width: 74px;
-    height: 74px;
-    margin: 0 auto 0.75rem;
-    border-radius: 50%;
-    background: var(--primary-light);
-    color: var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.2rem;
-    transition: var(--transition);
-}
-
 .image-upload-area:hover .upload-icon-wrap,
 .image-upload-area.dragover .upload-icon-wrap {
     color: #fff;
@@ -482,38 +160,9 @@ textarea.form-control {
     box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
 }
 
-.upload-main-text {
-    font-size: 1.1rem;
-    color: var(--text);
-}
-
-.upload-or {
-    display: block;
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    margin: 0.3rem 0;
-}
-
-.upload-browse-btn {
-    border-radius: 999px;
-    padding: 0.45rem 1.3rem;
-    font-weight: 600;
-}
-
-/* Gallery preview */
-.gallery-preview {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 0.75rem;
-}
+/* ============ Gallery preview — grid auto-fill kept as inline arbitrary; thumb states below ============ */
 
 .gallery-thumb {
-    position: relative;
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    aspect-ratio: 4 / 3;
-    border: 2px solid var(--border);
-    box-shadow: var(--shadow-sm);
     animation: thumbIn 0.3s ease;
 }
 
@@ -530,13 +179,6 @@ textarea.form-control {
 
 .gallery-thumb.is-cover {
     border-color: var(--accent);
-}
-
-.gallery-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
 }
 
 .cover-badge {
@@ -583,24 +225,7 @@ textarea.form-control {
     background: var(--danger);
 }
 
-#imageError {
-    color: var(--danger);
-    font-size: 0.82rem;
-    margin-top: 0.35rem;
-}
-
-/* ============ Facilities Checkboxes ============ */
-#facilitiesGrid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-}
-
-#facilitiesGrid .col-md-6 {
-    flex: 0 0 auto;
-    width: auto;
-    padding: 0;
-}
+/* ============ Facilities — complex :has(.facility-checkbox:checked) selector ============ */
 
 .facility-item {
     display: inline-flex;
@@ -656,61 +281,9 @@ textarea.form-control {
     transition: var(--transition);
 }
 
-/* ============ Form Actions / Buttons ============ */
-.form-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.9rem;
-    padding-top: 1.75rem;
-    flex-wrap: wrap;
-}
-
-.btn {
-    transition: var(--transition);
-    font-weight: 600;
-    border-radius: var(--radius-sm);
-}
-
-.btn-primary {
-    background: var(--primary);
-    border-color: var(--primary);
-}
-
-.btn-primary:hover,
-.btn-primary:focus {
-    background: var(--primary-dark);
-    border-color: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
-}
-
-.btn-outline-secondary {
-    border-color: var(--border);
-    color: var(--text-muted);
-}
-
-.btn-outline-secondary:hover {
-    background: var(--bg);
-    border-color: var(--text-muted);
-    color: var(--text);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
-}
-
-.btn-lg {
-    border-radius: 999px;
-    padding: 0.7rem 1.6rem;
-}
-
-/* ============ Toast ============ */
-.toast-container {
-    z-index: 1080;
-}
+/* ============ Toast animations — JS toggles .hiding class ============ */
 
 .toast {
-    border: none;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
     animation: slideIn 0.35s ease;
 }
 
@@ -768,9 +341,9 @@ textarea.form-control {
     font-size: 1.15rem;
 }
 
-/* ============ Responsive ============ */
+/* ============ Responsive @media — progress steps wrap, sidebar collapse, form padding ============ */
 
-/* Tablet */
+/* Tablet: progress steps wrap */
 @media (max-width: 1199.98px) {
     .form-progress {
         flex-wrap: wrap;
@@ -778,7 +351,7 @@ textarea.form-control {
     }
 }
 
-/* Mobile / Tablet: collapsed sidebar */
+/* Mobile / Tablet: collapsed sidebar + .open / .show toggles */
 @media (max-width: 991.98px) {
     .sidebar {
         transform: translateX(-100%);
@@ -786,11 +359,6 @@ textarea.form-control {
 
     .sidebar.open {
         transform: translateX(0);
-    }
-
-    .sidebar-overlay.show {
-        opacity: 1;
-        visibility: visible;
     }
 
     .main-content {

@@ -484,9 +484,6 @@ class RedBlackTree:
         # Remove Double Black
         x.color = Color.BLACK
 
-    # =========================================================
-    # INORDER TRAVERSAL
-    # =========================================================
 
     def inorder(self, node=None):
 
@@ -505,9 +502,6 @@ class RedBlackTree:
 
         self.inorder(node.right)
 
-    # =========================================================
-    # PREORDER
-    # =========================================================
 
     def preorder(self, node=None):
 

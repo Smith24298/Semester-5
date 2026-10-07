@@ -1,8 +1,3 @@
-"""
-Heapsort implementation + empirical runtime benchmark for
-best / worst / average case inputs across several sizes.
-"""
-
 import random
 import time
 import copy

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nestly — find your next place</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { ink: '#14211b', moss: '#315943', leaf: '#b6d89b', cream: '#f8f5ec', coral: '#ed8061' }, fontFamily: { display: ['DM Serif Display', 'serif'], sans: ['Plus Jakarta Sans', 'sans-serif'] } } } }</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body class="bg-cream text-ink font-sans">
+    <header class="max-w-7xl mx-auto px-5 lg:px-10 py-6 flex items-center justify-between">
+        <a href="#" class="flex items-center gap-3"><span class="logo-mark">N</span><span
+                class="font-bold text-xl tracking-tight">nestly</span></a>
+        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold"><a href="#explore" class="nav-link">Find a
+                PG</a><a href="#owner" class="nav-link">For owners</a><a href="#how" class="nav-link">How it works</a>
+        </nav>
+        <button class="icon-btn" aria-label="Open menu" id="menuBtn">☰</button>
+        <button
+            class="hidden md:block bg-ink text-white rounded-full px-5 py-3 text-sm font-bold hover:bg-moss transition">List
+            your PG <span class="ml-2">↗</span></button>
+    </header>
+
+    <main>
+        <section
+            class="max-w-7xl mx-auto px-5 lg:px-10 pt-10 pb-20 lg:pt-20 grid lg:grid-cols-[1fr_0.9fr] gap-12 items-center">
+            <div class="reveal">
+                <p class="eyebrow">A better place to land</p>
+                <h1 class="font-display text-6xl sm:text-7xl lg:text-8xl leading-[.9] mt-5 tracking-tight">Find a
+                    place<br><em>that feels</em><br>like yours.</h1>
+                <p class="text-lg text-ink/65 mt-8 max-w-md leading-relaxed">Handpicked PGs and co-living spaces for the
+                    next chapter of your life. Search less. Belong sooner.</p><a href="#explore"
+                    class="inline-flex items-center gap-3 bg-coral text-white rounded-full px-6 py-4 mt-8 font-bold shadow-lg shadow-coral/20 hover:-translate-y-1 transition">Explore
+                    homes <span class="text-xl">↘</span></a>
+            </div>
+            <div class="hero-collage reveal">
+                <div class="hero-image"></div>
+                <div class="sticker">good<br>spaces,<br>good days.</div>
+                <div class="rating-pill"><span class="text-coral">★★★★★</span><strong>4.8</strong><small>average
+                        rating</small></div>
+            </div>
+        </section>
+
+        <section id="explore" class="bg-white border-y border-ink/10 py-16">
+            <div class="max-w-7xl mx-auto px-5 lg:px-10">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-8">
+                    <div>
+                        <p class="eyebrow">Curated for you</p>
+                        <h2 class="font-display text-5xl mt-2">Places worth<br><em>coming home to.</em></h2>
+                    </div><button id="filtersBtn"
+                        class="border border-ink/20 rounded-full px-5 py-3 font-semibold text-sm hover:bg-cream transition">Filter
+                        & sort <span class="ml-2">⌄</span></button>
+                </div>
+                <div id="filters" class="hidden bg-cream rounded-2xl p-5 mb-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <label class="field">Area<input id="areaFilter" placeholder="Try Koramangala" /></label><label
+                        class="field">Max rent<input id="rentFilter" type="number"
+                            placeholder="₹ 20,000" /></label><label class="field">Room type<select id="typeFilter">
+                            <option>All</option>
+                            <option>Private room</option>
+                            <option>Shared room</option>
+                            <option>Co-living</option>
+                        </select></label><label class="field">For<select id="genderFilter">
+                            <option>Any</option>
+                            <option>Female</option>
+                            <option>Male</option>
+                        </select></label></div>
+                <div id="pgGrid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+                <div id="emptyState" class="hidden text-center py-16 text-ink/60">No homes match those filters. Try
+                    widening your search.</div>
+            </div>
+        </section>
+
+        <section id="how" class="max-w-7xl mx-auto px-5 lg:px-10 py-20 grid lg:grid-cols-2 gap-16">
+            <div>
+                <p class="eyebrow">The Nestly way</p>
+                <h2 class="font-display text-5xl mt-3">Move in with<br><em>more certainty.</em></h2>
+                <p class="text-ink/65 mt-6 max-w-md leading-relaxed">Real photos, responsive owners, and the details
+                    that matter before you book a visit. We keep it simple.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-5">
+                <div class="feature"><span>01</span>
+                    <h3>Search your way</h3>
+                    <p>Filter by neighbourhood, budget, room type and vibe.</p>
+                </div>
+                <div class="feature alt"><span>02</span>
+                    <h3>See the real thing</h3>
+                    <p>Browse verified spaces with honest, useful details.</p>
+                </div>
+                <div class="feature alt"><span>03</span>
+                    <h3>Talk to owners</h3>
+                    <p>Ask questions and book a visit directly.</p>
+                </div>
+                <div class="feature"><span>04</span>
+                    <h3>Feel at home</h3>
+                    <p>Find the place that makes the city feel yours.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="owner" class="owner-band">
+            <div class="max-w-7xl mx-auto px-5 lg:px-10 grid lg:grid-cols-[.85fr_1.15fr] gap-12 items-center">
+                <div>
+                    <p class="eyebrow light">For thoughtful owners</p>
+                    <h2 class="font-display text-5xl sm:text-6xl text-white mt-3">Your space<br><em>deserves a
+                            story.</em></h2>
+                    <p class="text-white/70 mt-6 max-w-md leading-relaxed">Bring your best rooms to people who are ready
+                        to find them. Manage your profile, showcase your home and meet the right residents.</p><button
+                        id="ownerBtn"
+                        class="bg-leaf text-ink rounded-full px-6 py-4 mt-8 font-bold hover:bg-white transition">Open
+                        owner dashboard ↗</button>
+                </div>
+                <div class="owner-card">
+                    <div class="flex items-start justify-between">
+                        <div><span class="avatar">MR</span>
+                            <p class="font-bold mt-4">Maya Rao</p>
+                            <p class="text-sm text-ink/55">The Fern House · Koramangala</p>
+                        </div><span class="verified">✓ Verified</span>
+                    </div>
+                    <div class="border-t border-ink/10 mt-7 pt-5 grid grid-cols-3 text-center">
+                        <div><strong>24</strong><small>inquiries</small></div>
+                        <div><strong>4.8</strong><small>rating</small></div>
+                        <div><strong>86%</strong><small>response</small></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer
+        class="max-w-7xl mx-auto px-5 lg:px-10 py-10 flex flex-col sm:flex-row justify-between gap-4 text-sm text-ink/55">
+        <span>© 2026 nestly</span><span>Made for better beginnings.</span></footer>
+    <div id="toast" class="toast"></div>
+    <script src="/app.js"></script>
+</body>
+
+</html>

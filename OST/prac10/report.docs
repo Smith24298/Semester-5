@@ -1,0 +1,6 @@
+Nestly PG Finder practical report is generated as report.docx.
+
+Main features: PG search/filtering; owner profile dashboard; drag-and-drop shortlist.
+Side features: verified/rating signals; responsive Tailwind UI; MongoDB persistence with demo fallback; REST health/publish endpoints.
+
+Run npm install && npm run docs to regenerate the Word document.

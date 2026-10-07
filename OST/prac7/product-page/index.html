@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopEase | Premium Wireless Headphones</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="announcement-bar" aria-label="Special Offers">
+    <div class="container announcement-content">
+      <span><i class="fa-solid fa-bolt text-warning"></i> Festival Special: Flat 40% OFF + Extra 10% on UPI payments | Code: <strong>FESTIVE10</strong></span>
+      <div class="announcement-links">
+        <a href="#related-products"><i class="fa-solid fa-truck-fast"></i> Free Shipping on Orders &gt; ₹999</a>
+        <a href="#reviews-section"><i class="fa-solid fa-shield-halved"></i> 1 Year Warranty</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-toggle" id="mobile-menu-btn" aria-label="Toggle Navigation Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" id="brand-logo">
+        <span class="logo-icon"><i class="fa-solid fa-bag-shopping"></i></span>
+        <span class="logo-text">Shop<span class="logo-accent">Ease</span></span>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="nav-menu" id="nav-menu">
+        <div class="mobile-menu-header">
+          <div class="brand-logo">
+            <span class="logo-icon"><i class="fa-solid fa-bag-shopping"></i></span>
+            <span class="logo-text">Shop<span class="logo-accent">Ease</span></span>
+          </div>
+          <button class="btn-close-menu" id="close-menu-btn" aria-label="Close Menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#product-main" class="nav-link active">Products</a></li>
+          <li class="nav-item"><a href="#specifications-tab" class="nav-link">Categories</a></li>
+          <li class="nav-item"><a href="#related-products" class="nav-link special-offer"><i class="fa-solid fa-fire"></i> Offers</a></li>
+        </ul>
+      </nav>
+
+      <!-- Search Bar -->
+      <div class="header-search">
+        <form class="search-form" id="search-form" onsubmit="return false;">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input 
+            type="text" 
+            id="nav-search-input" 
+            class="search-input" 
+            placeholder="Search audio, headphones..." 
+            autocomplete="off"
+            aria-label="Search products"
+          >
+          <button type="button" class="btn-search-clear" id="search-clear-btn" aria-label="Clear Search" style="display: none;">
+            <i class="fa-solid fa-circle-xmark"></i>
+          </button>
+        </form>
+        <!-- Search Quick Results Dropdown -->
+        <div class="search-results-dropdown" id="search-results-dropdown" style="display: none;">
+          <div class="search-results-list" id="search-results-list"></div>
+        </div>
+      </div>
+
+      <!-- Action Icons (Wishlist, Cart, Account) -->
+      <div class="header-actions">
+        <!-- Wishlist Icon -->
+        <button class="action-btn" id="header-wishlist-btn" title="View Wishlist" aria-label="Wishlist">
+          <i class="fa-regular fa-heart"></i>
+          <span class="badge-count wishlist-count" id="header-wishlist-count">0</span>
+        </button>
+
+        <!-- Cart Icon -->
+        <button class="action-btn" id="header-cart-btn" title="View Cart" aria-label="Shopping Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="badge-count cart-count" id="header-cart-count">0</span>
+        </button>
+
+        <!-- User / Account Icon -->
+        <div class="user-account-wrapper">
+          <button class="action-btn" id="header-user-btn" title="My Account" aria-label="User Account">
+            <i class="fa-regular fa-user"></i>
+          </button>
+          <div class="user-dropdown-menu" id="user-dropdown" style="display: none;">
+            <div class="user-dropdown-header">
+              <strong>Hi, Alex!</strong>
+              <span>alex.demo@shopease.in</span>
+            </div>
+            <hr>
+            <a href="javascript:void(0)" class="dropdown-item"><i class="fa-solid fa-box-open"></i> My Orders</a>
+            <a href="javascript:void(0)" class="dropdown-item"><i class="fa-regular fa-heart"></i> Saved Items</a>
+            <a href="javascript:void(0)" class="dropdown-item"><i class="fa-solid fa-sliders"></i> Account Settings</a>
+            <hr>
+            <a href="javascript:void(0)" class="dropdown-item text-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="#"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><i class="fa-solid fa-chevron-right breadcrumb-separator"></i></li>
+        <li><a href="#">Audio &amp; Sound</a></li>
+        <li><i class="fa-solid fa-chevron-right breadcrumb-separator"></i></li>
+        <li><a href="#">Over-Ear Headphones</a></li>
+        <li><i class="fa-solid fa-chevron-right breadcrumb-separator"></i></li>
+        <li class="active" aria-current="page" id="breadcrumb-current-product">Premium Wireless Headphones</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="main-wrapper">
+    <div class="container">
+
+      <!-- ==============================================
+           2. PRODUCT DETAIL SECTION (TWO-COLUMN LAYOUT)
+      ============================================== -->
+      <section class="product-detail-section" id="product-main">
+        <div class="product-grid">
+
+          <!-- -----------------------------------------
+               LEFT COLUMN: PRODUCT IMAGES & GALLERY
+          ------------------------------------------ -->
+          <div class="product-gallery-column">
+            <div class="product-gallery-sticky">
+
+              <!-- Main Image Display Container -->
+              <div class="main-image-wrapper" id="main-image-wrapper">
+                <!-- Floating Wishlist Button -->
+                <button class="gallery-wishlist-btn" id="product-wishlist-btn" title="Add to Wishlist" aria-label="Toggle Wishlist">
+                  <i class="fa-regular fa-heart wishlist-icon-unfilled"></i>
+                  <i class="fa-solid fa-heart wishlist-icon-filled"></i>
+                </button>
+
+                <!-- Floating Sale/Discount Badge -->
+                <div class="floating-badge-discount" id="floating-discount-badge">40% OFF</div>
+
+                <!-- Main Product Image -->
+                <div class="main-image-viewport" id="main-image-viewport">
+                  <img 
+                    src="assets/images/product-black-1.jpg" 
+                    alt="Premium Wireless Headphones" 
+                    id="main-product-img" 
+                    class="main-product-image"
+                    data-zoom-src="assets/images/product-black-1.jpg"
+                  >
+                  <!-- Zoom Lens for Magnifier -->
+                  <div class="zoom-lens" id="zoom-lens"></div>
+                </div>
+
+                <!-- Zoomed Result Preview Flyout -->
+                <div class="zoom-result" id="zoom-result"></div>
+                
+                <!-- Zoom Hint Badge -->
+                <span class="zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Hover to zoom image</span>
+              </div>
+
+              <!-- 4 Product Image Thumbnails -->
+              <div class="thumbnails-container" id="thumbnails-container" role="tablist" aria-label="Product image thumbnails">
+                <!-- Populated dynamically / fallback HTML -->
+                <button class="thumb-btn active" data-index="0" data-src="assets/images/product-black-1.jpg" aria-label="Thumbnail 1">
+                  <img src="assets/images/product-black-1.jpg" alt="Headphones Front View">
+                </button>
+                <button class="thumb-btn" data-index="1" data-src="assets/images/product-black-2.jpg" aria-label="Thumbnail 2">
+                  <img src="assets/images/product-black-2.jpg" alt="Headphones Angle Detail">
+                </button>
+                <button class="thumb-btn" data-index="2" data-src="assets/images/product-white-1.jpg" aria-label="Thumbnail 3">
+                  <img src="assets/images/product-white-1.jpg" alt="Headphones White Edition">
+                </button>
+                <button class="thumb-btn" data-index="3" data-src="assets/images/product-blue-1.jpg" aria-label="Thumbnail 4">
+                  <img src="assets/images/product-blue-1.jpg" alt="Headphones Navy Edition">
+                </button>
+              </div>
+
+              <!-- Trust Highlights below images -->
+              <div class="gallery-highlights">
+                <div class="highlight-item">
+                  <i class="fa-solid fa-truck-fast"></i>
+                  <div>
+                    <h6>Free Express Delivery</h6>
+                    <small>Dispatched within 24 Hours</small>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <i class="fa-solid fa-rotate-left"></i>
+                  <div>
+                    <h6>30 Days Return</h6>
+                    <small>100% Hassle-Free Refunds</small>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <i class="fa-solid fa-shield-check"></i>
+                  <div>
+                    <h6>1 Year Warranty</h6>
+                    <small>Direct Brand Replacement</small>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- -----------------------------------------
+               RIGHT COLUMN: PRODUCT INFORMATION & ACTIONS
+          ------------------------------------------ -->
+          <div class="product-info-column">
+            <div class="product-info-wrapper">
+
+              <!-- Brand & Category Tag -->
+              <div class="product-meta-header">
+                <span class="product-brand-tag" id="product-brand">AcoustiQ Pro</span>
+                <span class="product-sku">SKU: <span id="product-sku-code">AQ-HP-750X</span></span>
+              </div>
+
+              <!-- Product Name -->
+              <h1 class="product-title" id="product-name">Premium Wireless Headphones</h1>
+
+              <!-- Star Rating & Review Count -->
+              <div class="product-rating-box" id="product-rating-box">
+                <div class="stars-group" id="stars-display">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span class="rating-number" id="rating-number">4.5</span>
+                <span class="rating-divider">•</span>
+                <a href="#reviews-section" class="review-link" id="scroll-to-reviews-btn">
+                  (<span id="review-count-header">128</span> Reviews)
+                </a>
+                <span class="verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Product</span>
+              </div>
+
+              <!-- Pricing Card -->
+              <div class="pricing-card">
+                <div class="price-row">
+                  <span class="current-price" id="product-current-price">₹2,999</span>
+                  <span class="original-price" id="product-original-price">₹4,999</span>
+                  <span class="discount-badge" id="product-discount-badge">40% OFF</span>
+                </div>
+                <div class="price-savings">
+                  You save <strong id="price-savings-amount">₹2,000</strong> (Inclusive of all applicable taxes)
+                </div>
+              </div>
+
+              <!-- Stock Availability Status -->
+              <div class="stock-status-box" id="stock-status-box">
+                <span class="stock-indicator in-stock" id="stock-indicator-dot"></span>
+                <span class="stock-text" id="product-stock-status">✓ In Stock</span>
+                <span class="stock-units" id="product-stock-units">(15 units available)</span>
+              </div>
+
+              <!-- Product Short Description -->
+              <div class="product-description-excerpt">
+                <p id="product-short-desc">
+                  Experience studio-grade acoustic clarity with active hybrid noise cancellation, 
+                  ultra-plush ergonomic memory-foam cushions, 40mm titanium drivers, and an astonishing 
+                  60-hour playtime on a single charge.
+                </p>
+              </div>
+
+              <hr class="section-divider">
+
+              <!-- ==============================================
+                   4. PRODUCT VARIATIONS (COLOR & SIZE)
+              ============================================== -->
+              <div class="product-variations-container">
+
+                <!-- Color Selection -->
+                <div class="variation-group" id="color-variation-group">
+                  <div class="variation-label-row">
+                    <span class="variation-label">Color:</span>
+                    <strong class="selected-variation-value" id="selected-color-name">Midnight Black</strong>
+                    <span class="validation-message" id="color-validation-msg" style="display: none;">Please select a color</span>
+                  </div>
+                  <div class="color-options-list" id="color-options-list" role="radiogroup" aria-label="Color options">
+                    <!-- Populated dynamically via JS / fallback -->
+                    <button 
+                      type="button" 
+                      class="color-swatch-btn active" 
+                      data-color="Midnight Black" 
+                      data-hex="#1e293b" 
+                      data-img="assets/images/product-black-1.jpg"
+                      title="Midnight Black"
+                      role="radio" 
+                      aria-checked="true"
+                    >
+                      <span class="color-circle" style="background-color: #1e293b;"></span>
+                      <span class="color-text">Black</span>
+                    </button>
+                    <button 
+                      type="button" 
+                      class="color-swatch-btn" 
+                      data-color="Pearl White" 
+                      data-hex="#f1f5f9" 
+                      data-img="assets/images/product-white-1.jpg"
+                      title="Pearl White"
+                      role="radio" 
+                      aria-checked="false"
+                    >
+                      <span class="color-circle" style="background-color: #f8fafc; border: 1px solid #cbd5e1;"></span>
+                      <span class="color-text">White</span>
+                    </button>
+                    <button 
+                      type="button" 
+                      class="color-swatch-btn" 
+                      data-color="Deep Blue" 
+                      data-hex="#1e3a8a" 
+                      data-img="assets/images/product-blue-1.jpg"
+                      title="Deep Blue"
+                      role="radio" 
+                      aria-checked="false"
+                    >
+                      <span class="color-circle" style="background-color: #1e3a8a;"></span>
+                      <span class="color-text">Blue</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Size / Variant Selection -->
+                <div class="variation-group" id="size-variation-group">
+                  <div class="variation-label-row">
+                    <span class="variation-label">Size / Variant:</span>
+                    <strong class="selected-variation-value" id="selected-size-name">Medium (Standard)</strong>
+                    <span class="validation-message" id="size-validation-msg" style="display: none;">Please select a size</span>
+                  </div>
+                  <div class="size-options-list" id="size-options-list" role="radiogroup" aria-label="Size options">
+                    <!-- Populated dynamically / fallback -->
+                    <button 
+                      type="button" 
+                      class="size-pill-btn" 
+                      data-size="Small" 
+                      data-desc="On-Ear Compact Fit" 
+                      role="radio" 
+                      aria-checked="false"
+                    >
+                      <span class="size-title">Small</span>
+                      <span class="size-sub">Compact</span>
+                    </button>
+                    <button 
+                      type="button" 
+                      class="size-pill-btn active" 
+                      data-size="Medium" 
+                      data-desc="Standard Over-Ear Fit" 
+                      role="radio" 
+                      aria-checked="true"
+                    >
+                      <span class="size-title">Medium</span>
+                      <span class="size-sub">Standard</span>
+                    </button>
+                    <button 
+                      type="button" 
+                      class="size-pill-btn" 
+                      data-size="Large" 
+                      data-desc="Pro Over-Ear Cushioned" 
+                      role="radio" 
+                      aria-checked="false"
+                    >
+                      <span class="size-title">Large</span>
+                      <span class="size-sub">Pro Comfort</span>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- ==============================================
+                   5. QUANTITY SELECTOR & SUBTOTAL
+              ============================================== -->
+              <div class="quantity-subtotal-container">
+                <div class="quantity-wrapper">
+                  <label for="quantity-input" class="quantity-label">Quantity:</label>
+                  <div class="quantity-selector" id="quantity-selector">
+                    <button type="button" class="qty-btn qty-decrease" id="qty-minus" aria-label="Decrease quantity">
+                      <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <input 
+                      type="number" 
+                      id="quantity-input" 
+                      class="qty-input" 
+                      value="1" 
+                      min="1" 
+                      max="15" 
+                      readonly 
+                      aria-label="Product quantity"
+                    >
+                    <button type="button" class="qty-btn qty-increase" id="qty-plus" aria-label="Increase quantity">
+                      <i class="fa-solid fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Dynamic Subtotal Calculation -->
+                <div class="subtotal-display">
+                  <span class="subtotal-label">Subtotal:</span>
+                  <span class="subtotal-amount" id="product-subtotal">₹2,999</span>
+                </div>
+              </div>
+
+              <!-- ==============================================
+                   6 & 7. ACTION BUTTONS: ADD TO CART & BUY NOW
+              ============================================== -->
+              <div class="product-action-buttons">
+                <!-- Add to Cart Button -->
+                <button type="button" class="btn btn-add-to-cart" id="btn-add-to-cart">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                  <span>Add to Cart</span>
+                </button>
+
+                <!-- Buy Now Button -->
+                <button type="button" class="btn btn-buy-now" id="btn-buy-now">
+                  <i class="fa-solid fa-bolt-lightning"></i>
+                  <span>Buy Now</span>
+                </button>
+              </div>
+
+              <!-- Security & Guarantee Badges -->
+              <div class="security-guarantee-strip">
+                <div class="guarantee-chip">
+                  <i class="fa-solid fa-lock text-primary"></i> Secure 256-bit Encrypted Checkout
+                </div>
+                <div class="guarantee-chip">
+                  <i class="fa-solid fa-certificate text-success"></i> 100% Original Brand Guarantee
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==============================================
+           8. PRODUCT DESCRIPTION, SPECIFICATIONS & REVIEWS TABS
+      ============================================== -->
+      <section class="product-tabs-section" id="tabs-section">
+        <div class="tabs-header-container">
+          <ul class="tabs-nav-list" role="tablist">
+            <li class="tab-item">
+              <button 
+                class="tab-link active" 
+                id="tab-desc-btn" 
+                data-tab="tab-description" 
+                role="tab" 
+                aria-selected="true" 
+                aria-controls="tab-description"
+              >
+                <i class="fa-regular fa-file-lines"></i> Description
+              </button>
+            </li>
+            <li class="tab-item">
+              <button 
+                class="tab-link" 
+                id="tab-specs-btn" 
+                data-tab="tab-specifications" 
+                role="tab" 
+                aria-selected="false" 
+                aria-controls="tab-specifications"
+              >
+                <i class="fa-solid fa-list-check"></i> Specifications
+              </button>
+            </li>
+            <li class="tab-item">
+              <button 
+                class="tab-link" 
+                id="tab-reviews-btn" 
+                data-tab="tab-reviews" 
+                role="tab" 
+                aria-selected="false" 
+                aria-controls="tab-reviews"
+              >
+                <i class="fa-regular fa-star"></i> Reviews (<span id="reviews-tab-count">128</span>)
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tabs-content-wrapper">
+
+          <!-- -----------------------------------------
+               TAB 1: PRODUCT DESCRIPTION
+          ------------------------------------------ -->
+          <div class="tab-pane active" id="tab-description" role="tabpanel" aria-labelledby="tab-desc-btn">
+            <div class="tab-description-content">
+              <div class="description-grid">
+                <div class="description-text">
+                  <h3 class="tab-section-heading">Engineered for Audiophiles, Crafted for Comfort</h3>
+                  <p>
+                    Immerse yourself in exceptional acoustic brilliance with the AcoustiQ Elite Wireless 750 headphones.
+                    Engineered with custom-tuned 40mm titanium diaphragm drivers, these headphones deliver deep, resonant
+                    sub-bass, immaculate mid-frequencies, and crystal-clear highs.
+                  </p>
+                  <p>
+                    Whether you are working in a bustling office, commuting on a train, or enjoying your favorite lossless audio,
+                    our <strong>Quad-Microphone Active Noise Cancellation (ANC)</strong> continuously adapts to your surroundings,
+                    reducing background noise by up to 38dB.
+                  </p>
+
+                  <h4 class="features-subheading">Key Highlights &amp; Innovations</h4>
+                  <ul class="features-checklist">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Hybrid Active Noise Cancellation:</strong> 4 specialized mics suppress ambient engine drone and crowd murmurs.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>60 Hours Unrivaled Playtime:</strong> Listen for days on a single charge; 10 minutes of fast USB-C charge yields 5 hours.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Multi-Point Bluetooth 5.3:</strong> Seamlessly switch audio playback between your laptop, tablet, and smartphone.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Ultra-Low Latency Mode (40ms):</strong> Flawless synchronization for competitive gaming and streaming cinema.</li>
+                  </ul>
+                </div>
+
+                <!-- Feature Visual Cards Grid -->
+                <div class="feature-cards-grid">
+                  <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-volume-high"></i></div>
+                    <h4>40mm Drivers</h4>
+                    <p>Titanium coated diaphragms deliver rich bass and ultra-low distortion.</p>
+                  </div>
+                  <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-battery-full"></i></div>
+                    <h4>60-Hour Battery</h4>
+                    <p>Class-leading endurance with USB-C Fast Fuel power delivery.</p>
+                  </div>
+                  <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h4>Hybrid ANC</h4>
+                    <p>Quad-microphone noise cancellation silences up to 38dB of noise.</p>
+                  </div>
+                  <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                    <h4>Memory Foam</h4>
+                    <p>Protein leather ear cushions designed for all-day fatigue-free listening.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- -----------------------------------------
+               TAB 2: SPECIFICATIONS TABLE
+          ------------------------------------------ -->
+          <div class="tab-pane" id="tab-specifications" role="tabpanel" aria-labelledby="tab-specs-btn" style="display: none;">
+            <div class="tab-specifications-content">
+              <h3 class="tab-section-heading">Technical Specifications</h3>
+              <p class="specs-intro">Comprehensive technical details and hardware specifications for AcoustiQ Elite 750.</p>
+              
+              <div class="specs-table-container">
+                <table class="specs-table" id="specs-table">
+                  <tbody>
+                    <tr>
+                      <th scope="row"><i class="fa-solid fa-tag"></i> Brand</th>
+                      <td id="spec-brand">AcoustiQ</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><i class="fa-solid fa-microchip"></i> Model</th>
+                      <td id="spec-model">Elite Wireless 750 ANC</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><i class="fa-solid fa-weight-hanging"></i> Weight</th>
+                      <td id="spec-weight">245 grams (Ultra-lightweight)</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><i class="fa-solid fa-battery-three-quarters"></i> Battery</th>
+                      <td id="spec-battery">60 Hours (800 mAh Lithium-Polymer, Fast Charge)</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><i class="fa-solid fa-wifi"></i> Connectivity</th>
+                      <td id="spec-connectivity">Bluetooth 5.3 LE, 3.5mm Gold-Plated Aux, USB-C Audio</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><i class="fa-solid fa-shield-cat"></i> Warranty</th>
+                      <td id="spec-warranty">1 Year Manufacturer Replacement Warranty</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><i class="fa-solid fa-gem"></i> Material</th>
+                      <td id="spec-material">Aerospace Aluminium Frame &amp; Memory Foam Protein Leather</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- -----------------------------------------
+               TAB 3: REVIEWS & REVIEW SYSTEM
+          ------------------------------------------ -->
+          <div class="tab-pane" id="tab-reviews" role="tabpanel" aria-labelledby="tab-reviews-btn" style="display: none;">
+            <div class="tab-reviews-content" id="reviews-section">
+              
+              <!-- Review Summary Header -->
+              <div class="reviews-summary-card">
+                <div class="overall-rating-box">
+                  <div class="big-rating-number" id="overall-rating-val">4.5</div>
+                  <div class="stars-group large-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                  </div>
+                  <div class="total-reviews-caption">Based on <span id="summary-reviews-count">128</span> customer ratings</div>
+                  <div class="recommendation-badge"><i class="fa-solid fa-thumbs-up"></i> 96% of buyers recommend this product</div>
+                </div>
+
+                <!-- Rating Progress Bars Breakdown -->
+                <div class="rating-breakdown-bars">
+                  <div class="rating-bar-row">
+                    <span>5 <i class="fa-solid fa-star"></i></span>
+                    <div class="progress-bar-track">
+                      <div class="progress-bar-fill" style="width: 74%;"></div>
+                    </div>
+                    <span class="bar-count">74%</span>
+                  </div>
+                  <div class="rating-bar-row">
+                    <span>4 <i class="fa-solid fa-star"></i></span>
+                    <div class="progress-bar-track">
+                      <div class="progress-bar-fill" style="width: 18%;"></div>
+                    </div>
+                    <span class="bar-count">18%</span>
+                  </div>
+                  <div class="rating-bar-row">
+                    <span>3 <i class="fa-solid fa-star"></i></span>
+                    <div class="progress-bar-track">
+                      <div class="progress-bar-fill" style="width: 5%;"></div>
+                    </div>
+                    <span class="bar-count">5%</span>
+                  </div>
+                  <div class="rating-bar-row">
+                    <span>2 <i class="fa-solid fa-star"></i></span>
+                    <div class="progress-bar-track">
+                      <div class="progress-bar-fill" style="width: 2%;"></div>
+                    </div>
+                    <span class="bar-count">2%</span>
+                  </div>
+                  <div class="rating-bar-row">
+                    <span>1 <i class="fa-solid fa-star"></i></span>
+                    <div class="progress-bar-track">
+                      <div class="progress-bar-fill" style="width: 1%;"></div>
+                    </div>
+                    <span class="bar-count">1%</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Reviews Layout: Left List, Right Submission Form -->
+              <div class="reviews-split-grid">
+
+                <!-- Left: List of Customer Reviews -->
+                <div class="reviews-feed-column">
+                  <h4 class="reviews-column-heading">
+                    Customer Feedback (<span id="feed-review-count">128</span>)
+                  </h4>
+                  <div class="reviews-list" id="reviews-list">
+                    <!-- Reviews dynamically inserted or fallback initial items -->
+                  </div>
+                </div>
+
+                <!-- Right: Submit Review Form (Section 9) -->
+                <div class="review-form-column">
+                  <div class="review-form-card">
+                    <h4 class="form-heading"><i class="fa-regular fa-pen-to-square"></i> Write a Customer Review</h4>
+                    <p class="form-subtext">Share your honest thoughts to help fellow shoppers make the right choice.</p>
+
+                    <form id="product-review-form" novalidate>
+                      <!-- Reviewer Name -->
+                      <div class="form-group" id="form-group-name">
+                        <label for="review-name" class="form-label">Your Full Name <span class="required">*</span></label>
+                        <input 
+                          type="text" 
+                          id="review-name" 
+                          class="form-control" 
+                          placeholder="e.g. Rahul Sharma"
+                          required
+                        >
+                        <span class="form-error-msg" id="error-name" style="display: none;">
+                          <i class="fa-solid fa-triangle-exclamation"></i> Name cannot be empty
+                        </span>
+                      </div>
+
+                      <!-- Star Rating Selector -->
+                      <div class="form-group" id="form-group-rating">
+                        <label class="form-label">Your Rating <span class="required">*</span></label>
+                        <div class="interactive-star-rating" id="star-picker">
+                          <button type="button" class="star-btn" data-rating="1" title="1 Star - Poor"><i class="fa-regular fa-star"></i></button>
+                          <button type="button" class="star-btn" data-rating="2" title="2 Stars - Fair"><i class="fa-regular fa-star"></i></button>
+                          <button type="button" class="star-btn" data-rating="3" title="3 Stars - Good"><i class="fa-regular fa-star"></i></button>
+                          <button type="button" class="star-btn" data-rating="4" title="4 Stars - Very Good"><i class="fa-regular fa-star"></i></button>
+                          <button type="button" class="star-btn" data-rating="5" title="5 Stars - Outstanding"><i class="fa-regular fa-star"></i></button>
+                          <span class="rating-text-feedback" id="rating-text-feedback">Select stars</span>
+                        </div>
+                        <input type="hidden" id="review-rating-value" value="0">
+                        <span class="form-error-msg" id="error-rating" style="display: none;">
+                          <i class="fa-solid fa-triangle-exclamation"></i> Rating must be selected
+                        </span>
+                      </div>
+
+                      <!-- Review Comment -->
+                      <div class="form-group" id="form-group-comment">
+                        <label for="review-comment" class="form-label">Detailed Review <span class="required">*</span></label>
+                        <textarea 
+                          id="review-comment" 
+                          class="form-control" 
+                          rows="4" 
+                          placeholder="What did you love or dislike about this product? Audio clarity, comfort, battery life..."
+                          required
+                        ></textarea>
+                        <span class="form-error-msg" id="error-comment" style="display: none;">
+                          <i class="fa-solid fa-triangle-exclamation"></i> Comment cannot be empty
+                        </span>
+                      </div>
+
+                      <!-- Submit Button -->
+                      <button type="submit" class="btn btn-submit-review" id="btn-submit-review">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Review
+                      </button>
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==============================================
+           10. RELATED PRODUCTS ("YOU MAY ALSO LIKE")
+      ============================================== -->
+      <section class="related-products-section" id="related-products">
+        <div class="section-title-wrap">
+          <div>
+            <span class="section-tag">Curated Recommendations</span>
+            <h2 class="section-heading">You May Also Like</h2>
+          </div>
+          <!-- Filter / Live Result Count Indicator -->
+          <div class="related-results-status" id="related-filter-status" style="display: none;">
+            Filtering products: "<strong id="active-search-term"></strong>"
+            <button type="button" class="btn-reset-filter" id="reset-filter-btn">Show All</button>
+          </div>
+        </div>
+
+        <!-- 4 Related Product Cards Grid -->
+        <div class="related-products-grid" id="related-products-grid">
+          <!-- Populated dynamically via JS/jQuery -->
+        </div>
+
+        <!-- No Products Found Message (For search filtering) -->
+        <div class="no-products-found" id="no-products-found" style="display: none;">
+          <div class="empty-icon"><i class="fa-solid fa-face-meh"></i></div>
+          <h3>No matching products found</h3>
+          <p>We couldn't find any products matching "<span id="empty-query-text"></span>". Try another search term.</p>
+          <button type="button" class="btn btn-primary-outline" id="btn-clear-search-empty">
+            <i class="fa-solid fa-rotate-left"></i> View All Products
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==============================================
+       7. BUY NOW / ORDER SUMMARY MODAL
+  ============================================== -->
+  <div class="modal-backdrop" id="checkout-modal-backdrop" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-order-title">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <span class="modal-badge"><i class="fa-solid fa-shield-check"></i> Express Checkout</span>
+            <h3 class="modal-title" id="modal-order-title">Order Summary</h3>
+          </div>
+          <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Modal Body: Order Item & Variations -->
+        <div class="modal-body">
+          <div class="modal-item-card">
+            <img src="assets/images/product-black-1.jpg" alt="Selected Product" class="modal-item-thumb" id="modal-product-img">
+            <div class="modal-item-details">
+              <h4 class="modal-item-title" id="modal-product-name">Premium Wireless Headphones</h4>
+              <div class="modal-item-specs">
+                <span class="spec-pill">Color: <strong id="modal-selected-color">Midnight Black</strong></span>
+                <span class="spec-pill">Size: <strong id="modal-selected-size">Medium</strong></span>
+              </div>
+              <div class="modal-item-price-row">
+                <span class="modal-unit-price">Price: <strong id="modal-unit-price">₹2,999</strong></span>
+                <span class="modal-qty">Qty: <strong id="modal-quantity">1</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Cost Breakdown Table -->
+          <div class="order-summary-breakdown">
+            <div class="summary-line">
+              <span>Item Subtotal</span>
+              <strong id="modal-subtotal">₹2,999</strong>
+            </div>
+            <div class="summary-line">
+              <span>Shipping &amp; Handling</span>
+              <span class="text-success font-semibold">FREE</span>
+            </div>
+            <div class="summary-line">
+              <span>Applicable GST / Taxes</span>
+              <span>Included</span>
+            </div>
+            <hr class="summary-divider">
+            <div class="summary-line total-line">
+              <span>Grand Total</span>
+              <strong class="grand-total-amount" id="modal-grand-total">₹2,999</strong>
+            </div>
+          </div>
+
+          <!-- Delivery Guarantee banner -->
+          <div class="modal-delivery-promise">
+            <i class="fa-solid fa-truck-ramp-box text-primary"></i>
+            <span>Guaranteed Express Delivery by <strong>Tomorrow, 5:00 PM</strong></span>
+          </div>
+        </div>
+
+        <!-- Modal Footer: Buttons -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary-outline" id="modal-cancel-btn">
+            Cancel
+          </button>
+          <button type="button" class="btn btn-primary" id="modal-proceed-btn">
+            <i class="fa-solid fa-lock"></i> Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       CART SLIDE-OUT DRAWER (Bonus Interactive UX)
+  ============================================== -->
+  <div class="cart-drawer-backdrop" id="cart-drawer-backdrop" style="display: none;"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Cart Drawer">
+    <div class="cart-drawer-header">
+      <div class="cart-drawer-title">
+        <i class="fa-solid fa-bag-shopping"></i> Your Shopping Bag (<span id="cart-drawer-count">0</span>)
+      </div>
+      <button class="cart-drawer-close" id="cart-drawer-close" aria-label="Close cart drawer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    
+    <div class="cart-drawer-body" id="cart-drawer-items">
+      <!-- Items dynamically populated via jQuery -->
+      <div class="empty-cart-state" id="empty-cart-state">
+        <i class="fa-solid fa-cart-arrow-down empty-cart-icon"></i>
+        <p>Your shopping bag is currently empty.</p>
+        <button class="btn btn-sm btn-primary-outline" id="btn-browse-products">Explore Products</button>
+      </div>
+    </div>
+
+    <div class="cart-drawer-footer" id="cart-drawer-footer" style="display: none;">
+      <div class="cart-total-row">
+        <span>Cart Total:</span>
+        <strong id="cart-drawer-total">₹0</strong>
+      </div>
+      <p class="shipping-note"><i class="fa-solid fa-circle-check text-success"></i> Free Shipping applied!</p>
+      <button class="btn btn-primary btn-block" id="btn-cart-checkout">
+        <i class="fa-solid fa-arrow-right"></i> Proceed to Checkout
+      </button>
+      <button class="btn-clear-cart" id="btn-clear-cart">
+        <i class="fa-regular fa-trash-can"></i> Clear Entire Cart
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==============================================
+       CUSTOM TOAST NOTIFICATION CONTAINER (jQuery)
+  ============================================== -->
+  <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="brand-logo">
+          <span class="logo-icon"><i class="fa-solid fa-bag-shopping"></i></span>
+          <span class="logo-text">Shop<span class="logo-accent">Ease</span></span>
+        </div>
+        <p class="footer-desc">
+          Crafting premium audio gear and everyday electronics with acoustic precision and comfort since 2018.
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h4 class="footer-heading">Shop</h4>
+        <ul class="footer-links">
+          <li><a href="#">Wireless Headphones</a></li>
+          <li><a href="#">True Wireless Earbuds</a></li>
+          <li><a href="#">Bluetooth Speakers</a></li>
+          <li><a href="#">Studio Microphones</a></li>
+          <li><a href="#">Audio Accessories</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Support &amp; Help</h4>
+        <ul class="footer-links">
+          <li><a href="#">Order Tracking</a></li>
+          <li><a href="#">Warranty Registration</a></li>
+          <li><a href="#">Returns &amp; Replacement</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Contact Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Secure Payments</h4>
+        <p class="footer-secure-text">All major debit/credit cards, UPI, and Netbanking accepted.</p>
+        <div class="payment-methods">
+          <span class="payment-badge"><i class="fa-brands fa-cc-visa"></i> VISA</span>
+          <span class="payment-badge"><i class="fa-brands fa-cc-mastercard"></i> Mastercard</span>
+          <span class="payment-badge"><i class="fa-solid fa-building-columns"></i> Netbanking</span>
+          <span class="payment-badge"><i class="fa-solid fa-mobile-screen"></i> UPI</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 ShopEase Inc. All rights reserved. Built with pure HTML5, CSS3, JavaScript &amp; jQuery.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Security</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==============================================
+       SCRIPTS: jQuery CDN with Local Fallback + Custom Script
+  ============================================== -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    // Fallback if CDN is unreachable or offline
+    if (typeof jQuery === 'undefined') {
+      document.write('<script src="js/jquery.min.js"><\/script>');
+    }
+  </script>
+  <script src="js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taskflow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/static/styles.css" />
+</head>
+
+<body>
+    <main class="app-shell">
+        <header class="topbar">
+            <a class="brand" href="/" aria-label="Taskflow home"><span
+                    class="brand-mark">+</span><span>taskflow</span></a>
+            <div class="connection-pill"><span class="pulse"></span><span id="connection-label">MySQL connected</span>
+            </div>
+        </header>
+        <section class="hero">
+            <div>
+                <p class="eyebrow">PERSONAL WORKSPACE <span>•</span> <span id="today-label"></span></p>
+                <h1>Make space for<br /><em>good work.</em></h1>
+                <p class="hero-copy">A clear board for the things worth finishing.</p>
+            </div>
+            <button class="primary-button" id="open-create"><span>+</span> New task</button>
+        </section>
+        <section class="toolbar" aria-label="Todo filters">
+            <div class="filter-tabs" role="tablist"><button class="filter-tab active" data-filter="all">All tasks <b
+                        id="count-all">0</b></button><button class="filter-tab" data-filter="backlog">Backlog <b
+                        id="count-backlog">0</b></button><button class="filter-tab" data-filter="progress">In progress
+                    <b id="count-progress">0</b></button><button class="filter-tab" data-filter="done">Done <b
+                        id="count-done">0</b></button></div><button class="refresh-button" id="refresh-todos"
+                title="Refresh tasks" aria-label="Refresh tasks">↻</button>
+        </section>
+        <section class="board" id="board">
+            <div class="board-column" data-status="backlog">
+                <div class="column-heading"><span class="column-dot yellow"></span>
+                    <h2>Backlog</h2><span class="column-count" id="column-count-backlog">0</span>
+                </div>
+                <div class="drop-zone" data-drop-status="backlog"></div>
+            </div>
+            <div class="board-column" data-status="progress">
+                <div class="column-heading"><span class="column-dot coral"></span>
+                    <h2>In progress</h2><span class="column-count" id="column-count-progress">0</span>
+                </div>
+                <div class="drop-zone" data-drop-status="progress"></div>
+            </div>
+            <div class="board-column" data-status="done">
+                <div class="column-heading"><span class="column-dot mint"></span>
+                    <h2>Done</h2><span class="column-count" id="column-count-done">0</span>
+                </div>
+                <div class="drop-zone" data-drop-status="done"></div>
+            </div>
+        </section>
+        <div class="empty-state" id="empty-state" hidden>
+            <div class="empty-icon">✦</div>
+            <h2>Your board is clear.</h2>
+            <p>Add a task and give your next idea somewhere to land.</p>
+        </div>
+    </main>
+    <dialog id="task-dialog">
+        <form method="dialog" id="task-form"><button type="button" class="close-button" id="close-dialog"
+                aria-label="Close">×</button>
+            <p class="eyebrow">NEW ENTRY</p>
+            <h2>What are you moving<br /><em>forward?</em></h2><label>Task title<input id="task-title" name="title"
+                    required maxlength="180" placeholder="e.g. Sketch the onboarding flow" /></label><label>Details
+                <span>(optional)</span><textarea id="task-description" name="description" maxlength="2000" rows="3"
+                    placeholder="A little context goes a long way..."></textarea></label>
+            <div class="dialog-actions"><button type="button" class="text-button"
+                    id="cancel-dialog">Cancel</button><button class="primary-button" type="submit">Create task
+                    <span>↗</span></button></div>
+        </form>
+    </dialog>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="/static/app.js"></script>
+</body>
+
+</html>

@@ -335,7 +335,11 @@ onMounted(() => {
           </select>
         </div>
       </div>
-      <div v-if="filteredProperties.length" class="property-grid">
+      <div
+        v-if="filteredProperties.length"
+        v-append-property="filteredProperties"
+        class="property-grid"
+      >
         <PropertyCard
           v-for="property in filteredProperties"
           :key="property.id"
@@ -402,7 +406,11 @@ onMounted(() => {
           <option value="pending">Pending</option>
         </select>
       </div>
-      <div v-if="filteredProperties.length" class="property-grid owner-grid">
+      <div
+        v-if="filteredProperties.length"
+        v-append-property="filteredProperties"
+        class="property-grid owner-grid"
+      >
         <PropertyCard
           v-for="property in filteredProperties"
           :key="property.id"

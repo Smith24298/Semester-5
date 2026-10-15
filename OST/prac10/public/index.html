@@ -23,7 +23,7 @@
                 PG</a><a href="#owner" class="nav-link">For owners</a><a href="#how" class="nav-link">How it works</a>
         </nav>
         <button class="icon-btn" aria-label="Open menu" id="menuBtn">☰</button>
-        <button
+        <button id="headerOwnerBtn"
             class="hidden md:block bg-ink text-white rounded-full px-5 py-3 text-sm font-bold hover:bg-moss transition">List
             your PG <span class="ml-2">↗</span></button>
     </header>
@@ -70,7 +70,8 @@
                             <option>Any</option>
                             <option>Female</option>
                             <option>Male</option>
-                        </select></label></div>
+                        </select></label>
+                </div>
                 <div id="pgGrid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-5"></div>
                 <div id="emptyState" class="hidden text-center py-16 text-ink/60">No homes match those filters. Try
                     widening your search.</div>
@@ -131,11 +132,110 @@
                 </div>
             </div>
         </section>
+
+        <section id="ownerDashboard" class="hidden bg-white border-y border-ink/10 py-16">
+            <div class="max-w-7xl mx-auto px-5 lg:px-10">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-10">
+                    <div>
+                        <p class="eyebrow">Owner workspace</p>
+                        <h2 class="font-display text-5xl mt-2">Manage your<br><em>spaces with ease.</em></h2>
+                        <p class="text-ink/65 mt-4 max-w-xl">Add your profile once, then keep every PG and property
+                            detail up to date from one place.</p>
+                    </div>
+                    <button id="closeOwnerBtn"
+                        class="border border-ink/20 rounded-full px-5 py-3 font-semibold text-sm">Back to homes</button>
+                </div>
+                <div class="grid lg:grid-cols-[.72fr_1.28fr] gap-8 items-start">
+                    <form id="ownerForm" class="dashboard-panel">
+                        <p class="eyebrow">Your profile</p>
+                        <h3 class="font-display text-3xl mt-2">Owner details</h3>
+                        <div class="form-grid mt-6">
+                            <label class="field">Full name<input id="ownerName" required
+                                    placeholder="Maya Rao" /></label>
+                            <label class="field">Phone<input id="ownerPhone" required type="tel"
+                                    placeholder="+91 98765 43210" /></label>
+                            <label class="field full-field">Email<input id="ownerEmail" type="email"
+                                    placeholder="maya@example.com" /></label>
+                            <label class="field full-field">About you<textarea id="ownerBio" rows="4"
+                                    placeholder="Tell residents what makes your spaces special."></textarea></label>
+                        </div>
+                        <button class="bg-ink text-white rounded-full px-5 py-3 mt-6 font-bold" type="submit">Save owner
+                            profile</button>
+                    </form>
+                    <div class="dashboard-panel">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <p class="eyebrow">Your properties</p>
+                                <h3 class="font-display text-3xl mt-2">PG listings</h3>
+                            </div>
+                            <button id="newPropertyBtn"
+                                class="bg-coral text-white rounded-full px-5 py-3 font-bold text-sm">+ Add
+                                property</button>
+                        </div>
+                        <div id="ownerProperties" class="owner-properties mt-6"></div>
+                        <div id="ownerEmpty" class="empty-owner hidden">No properties yet. Add your first PG to start
+                            managing it.</div>
+                    </div>
+                </div>
+                <form id="propertyForm" class="dashboard-panel hidden mt-8">
+                    <div class="flex items-start justify-between gap-4">
+                        <div>
+                            <p class="eyebrow">Property information</p>
+                            <h3 class="font-display text-3xl mt-2">Add a PG</h3>
+                        </div><button id="cancelPropertyBtn" type="button" class="text-ink/60 font-bold">Close</button>
+                    </div>
+                    <div class="form-grid mt-6">
+                        <label class="field">PG name<input id="propertyName" required
+                                placeholder="The Fern House" /></label>
+                        <label class="field">Area<input id="propertyArea" required placeholder="Koramangala" /></label>
+                        <label class="field">City<input id="propertyCity" required value="Bengaluru" /></label>
+                        <label class="field">Monthly rent<input id="propertyRent" required type="number" min="0"
+                                placeholder="14500" /></label>
+                        <label class="field">Available rooms<input id="propertyRooms" required type="number" min="1"
+                                placeholder="2" /></label>
+                        <label class="field">Room type<select id="propertyType">
+                                <option>Private room</option>
+                                <option>Shared room</option>
+                                <option>Co-living</option>
+                            </select></label>
+                        <label class="field">For<select id="propertyGender">
+                                <option>Any</option>
+                                <option>Female</option>
+                                <option>Male</option>
+                            </select></label>
+                        <label class="field">Image URL<input id="propertyImage" type="url"
+                                placeholder="https://..." /></label>
+                        <label class="field full-field">Amenities<input id="propertyAmenities"
+                                placeholder="Wi-Fi, Meals, Laundry" /></label>
+                        <label class="field full-field">Description<textarea id="propertyDescription" rows="4" required
+                                placeholder="Describe the rooms, house rules and nearby landmarks."></textarea></label>
+                    </div>
+                    <button class="bg-ink text-white rounded-full px-5 py-3 mt-6 font-bold" type="submit">Publish
+                        property</button>
+                </form>
+            </div>
+        </section>
     </main>
     <footer
         class="max-w-7xl mx-auto px-5 lg:px-10 py-10 flex flex-col sm:flex-row justify-between gap-4 text-sm text-ink/55">
-        <span>© 2026 nestly</span><span>Made for better beginnings.</span></footer>
+        <span>© 2026 nestly</span><span>Made for better beginnings.</span>
+    </footer>
     <div id="toast" class="toast"></div>
+    <div id="propertyModal" class="property-modal hidden" role="dialog" aria-modal="true"
+        aria-labelledby="modalPropertyName">
+        <div class="property-modal-card"><button id="closePropertyBtn" class="modal-close"
+                aria-label="Close property details">×</button><img id="modalPropertyImage" class="modal-image" alt="">
+            <div class="p-7"><span id="modalPropertyType" class="tag"></span>
+                <h2 id="modalPropertyName" class="font-display text-4xl mt-3"></h2>
+                <p id="modalPropertyLocation" class="text-ink/55 mt-2"></p>
+                <p id="modalPropertyDescription" class="leading-relaxed mt-6"></p>
+                <div id="modalPropertyAmenities" class="flex gap-2 flex-wrap mt-5"></div>
+                <div class="flex items-center justify-between border-t border-ink/10 mt-7 pt-5"><strong
+                        id="modalPropertyRent" class="text-xl"></strong><span id="modalPropertyOwner"
+                        class="text-sm text-ink/60"></span></div>
+            </div>
+        </div>
+    </div>
     <script src="/app.js"></script>
 </body>
 

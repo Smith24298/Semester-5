@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import { randomUUID } from "node:crypto";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -29,11 +30,27 @@ const pgSchema = new mongoose.Schema(
     description: String,
     image: String,
     owner: { name: String, phone: String, avatar: String },
+    ownerId: String,
   },
   { timestamps: true },
 );
 
 const PG = mongoose.models.PG || mongoose.model("PG", pgSchema);
+
+const ownerSchema = new mongoose.Schema(
+  {
+    externalId: { type: String, unique: true, index: true },
+    name: { type: String, required: true },
+    phone: { type: String, required: true },
+    email: String,
+    bio: String,
+  },
+  { timestamps: true },
+);
+const Owner = mongoose.models.Owner || mongoose.model("Owner", ownerSchema);
+
+const memoryOwners = new Map();
+const memoryProperties = [];
 
 const demoPGs = [
   {
@@ -124,12 +141,12 @@ app.get("/api/pgs", async (req, res) => {
       if (gender && gender !== "Any") filter.gender = { $in: [gender, "Any"] };
       if (type && type !== "All") filter.type = type;
       const storedListings = await PG.find(filter).sort({ rating: -1 }).lean();
-      if (storedListings.length > 0) return res.json(storedListings);
+      return res.json(storedListings.length > 0 ? storedListings : demoPGs);
     }
   } catch (error) {
     console.error("PG query failed:", error.message);
   }
-  const filtered = demoPGs.filter(
+  const filtered = [...memoryProperties, ...demoPGs].filter(
     (pg) =>
       (!area || pg.area.toLowerCase().includes(area.toLowerCase())) &&
       (!maxRent || pg.rent <= Number(maxRent)) &&
@@ -142,17 +159,156 @@ app.get("/api/pgs", async (req, res) => {
   res.json(filtered);
 });
 
+app.get("/api/pgs/:id", async (req, res) => {
+  try {
+    if (
+      mongoose.connection.readyState === 1 &&
+      mongoose.isValidObjectId(req.params.id)
+    ) {
+      const listing = await PG.findById(req.params.id).lean();
+      if (listing) return res.json(listing);
+    }
+  } catch (error) {
+    console.error("PG detail query failed:", error.message);
+  }
+  const listing = demoPGs.find((pg) => String(pg.id) === req.params.id);
+  if (!listing) return res.status(404).json({ message: "Property not found." });
+  res.json(listing);
+});
+
 app.post("/api/pgs", async (req, res) => {
   try {
-    if (mongoose.connection.readyState !== 1)
+    const payload = { ...req.body, ownerId: req.body.ownerId || "demo-owner" };
+    if (
+      !payload.name ||
+      !payload.area ||
+      !payload.rent ||
+      !payload.description
+    ) {
       return res
-        .status(503)
-        .json({ message: "Connect MongoDB to publish a listing." });
-    const listing = await PG.create(req.body);
+        .status(400)
+        .json({ message: "Name, area, rent and description are required." });
+    }
+    if (mongoose.connection.readyState === 1) {
+      const listing = await PG.create(payload);
+      return res.status(201).json(listing);
+    }
+    const listing = {
+      ...payload,
+      id: randomUUID(),
+      rating: 0,
+      distance: "Owner listing",
+      verified: false,
+      createdAt: new Date().toISOString(),
+    };
+    memoryProperties.unshift(listing);
     res.status(201).json(listing);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
+});
+
+app.get("/api/owners/:ownerId", async (req, res) => {
+  if (mongoose.connection.readyState === 1) {
+    const owner = await Owner.findOne({
+      $or: [
+        { externalId: req.params.ownerId },
+        ...(mongoose.isValidObjectId(req.params.ownerId)
+          ? [{ _id: req.params.ownerId }]
+          : []),
+      ],
+    }).lean();
+    if (owner) return res.json(owner);
+  }
+  const owner = memoryOwners.get(req.params.ownerId);
+  res.json(
+    owner || {
+      _id: req.params.ownerId,
+      name: "",
+      phone: "",
+      email: "",
+      bio: "",
+    },
+  );
+});
+
+app.put("/api/owners/:ownerId", async (req, res) => {
+  const { name, phone, email = "", bio = "" } = req.body;
+  if (!name || !phone)
+    return res.status(400).json({ message: "Name and phone are required." });
+  if (mongoose.connection.readyState === 1) {
+    const owner = await Owner.findOneAndUpdate(
+      { externalId: req.params.ownerId },
+      { externalId: req.params.ownerId, name, phone, email, bio },
+      { new: true, upsert: true, setDefaultsOnInsert: true },
+    ).lean();
+    return res.json(owner);
+  }
+  const owner = {
+    _id: req.params.ownerId,
+    name,
+    phone,
+    email,
+    bio,
+    updatedAt: new Date().toISOString(),
+  };
+  memoryOwners.set(req.params.ownerId, owner);
+  res.json(owner);
+});
+
+app.get("/api/owners/:ownerId/pgs", async (req, res) => {
+  if (mongoose.connection.readyState === 1)
+    return res.json(
+      await PG.find({ ownerId: req.params.ownerId })
+        .sort({ createdAt: -1 })
+        .lean(),
+    );
+  res.json(
+    memoryProperties.filter(
+      (property) => property.ownerId === req.params.ownerId,
+    ),
+  );
+});
+
+app.patch("/api/pgs/:id", async (req, res) => {
+  if (
+    mongoose.connection.readyState === 1 &&
+    mongoose.isValidObjectId(req.params.id)
+  ) {
+    const listing = await PG.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    }).lean();
+    if (listing) return res.json(listing);
+  }
+  const index = memoryProperties.findIndex(
+    (property) => property.id === req.params.id,
+  );
+  if (index === -1)
+    return res.status(404).json({ message: "Property not found." });
+  memoryProperties[index] = {
+    ...memoryProperties[index],
+    ...req.body,
+    id: req.params.id,
+  };
+  res.json(memoryProperties[index]);
+});
+
+app.delete("/api/pgs/:id", async (req, res) => {
+  if (
+    mongoose.connection.readyState === 1 &&
+    mongoose.isValidObjectId(req.params.id)
+  ) {
+    const listing = await PG.findByIdAndDelete(req.params.id).lean();
+    if (listing) return res.json({ ok: true });
+  }
+  const index = memoryProperties.findIndex(
+    (property) => property.id === req.params.id,
+  );
+  if (index === -1)
+    return res.status(404).json({ message: "Property not found." });
+  memoryProperties.splice(index, 1);
+  res.json({ ok: true });
 });
 
 app.get("/api/health", (_req, res) =>

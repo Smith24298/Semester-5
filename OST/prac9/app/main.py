@@ -14,12 +14,16 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, Session, mapped_column, sess
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "mysql+pymysql://appuser:app_password@localhost:3306/myapp",
+from sqlalchemy import create_engine
+
+DATABASE_URL = (
+    "mysql+pymysql://appuser:apppassword@127.0.0.0:3306/myapp"
 )
 
-engine = create_engine(DATABASE_URL, pool_pre_ping=True)
+engine = create_engine(
+    DATABASE_URL,
+    pool_pre_ping=True
+)
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
 

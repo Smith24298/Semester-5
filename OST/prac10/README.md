@@ -20,7 +20,13 @@ Nestly is a full-stack PG finder practical built to explore GitHub Copilot assis
 ## API
 
 - `GET /api/pgs?area=Koramangala&maxRent=16000`
+- `GET /api/pgs/:id`
 - `POST /api/pgs` with a listing JSON body
+- `GET /api/owners/:ownerId`
+- `PUT /api/owners/:ownerId` to save owner details
+- `GET /api/owners/:ownerId/pgs`
+- `PATCH /api/pgs/:id` to edit a listing
+- `DELETE /api/pgs/:id` to remove a listing
 - `GET /api/health`
 
 ## Feature map for the practical
@@ -28,8 +34,9 @@ Nestly is a full-stack PG finder practical built to explore GitHub Copilot assis
 ### Main features
 
 1. PG search and filtering
-2. Owner profile/dashboard view
-3. Drag-and-drop shortlist interaction
+2. Owner profile/dashboard view with property management
+3. Property detail view for every listing
+4. Drag-and-drop shortlist interaction
 
 ### Side features
 

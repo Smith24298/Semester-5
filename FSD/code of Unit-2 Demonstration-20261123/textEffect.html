@@ -1,0 +1,27 @@
+﻿<script src="https://cdn.tailwindcss.com"></script>
+
+<div class="p-5">
+    <h2 class="text-2xl font-bold mb-4">Typography Example</h2>
+
+    <select id="size" class="border p-2 rounded">
+        <option value="text-sm">Small</option>
+        <option value="text-lg">Large</option>
+        <option value="text-xl">Extra Large</option>
+        <option value="text-3xl">Heading</option>
+    </select>
+
+    <p id="text" class="mt-5 text-lg">
+        Welcome to Tailwind CSS
+    </p>
+</div>
+
+<script>const txt=document.getElementById("text");
+const size=document.getElementById("size");
+
+size.addEventListener("change",function(){
+
+    txt.className="mt-5";
+
+    txt.classList.add(this.value);
+
+});</script>

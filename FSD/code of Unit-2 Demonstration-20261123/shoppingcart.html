@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vue Reactivity - Shopping Cart</title>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+    <div id="myapp">
+
+        <h2>Shopping Cart</h2>
+
+        <h3>{{ productName }}</h3>
+
+        <p>Price: ₹{{ price }}</p>
+
+        <input type="text" v-model="quantity" />
+
+        <p>
+            Quantity:
+            <button @click="decreaseQuantity" v-if="quantity > 0">-</button>
+
+            {{ quantity }}
+
+            <button @click="increaseQuantity">+</button>
+        </p>
+
+        <h3>Total Amount: ₹{{ totalAmount }}</h3>
+
+        <p v-if="quantity == 1" >
+            <span style="font-weight:bolder; text-decoration:underline"> {{quantity}} </span> Product added to cart.
+        </p>
+
+        <p v-else-if="quantity > 1">
+            <span style="font-weight: bolder; text-decoration: underline"> {{quantity}} </span> Products added to cart.
+        </p>
+        <p v-else>
+            Cart is empty.
+        </p>
+
+    </div>
+
+
+    <script>
+    const { createApp, ref, computed } = Vue;
+
+    
+
+
+       app= createApp({
+
+            setup() {
+
+                // Reactive data
+                const productName = ref("Mobile Cover");
+                const price = ref(1000);
+                quantity = ref(1);
+
+                // Automatically recalculated when quantity changes
+                const totalAmount = computed(() => {
+                    return price.value * quantity.value;
+                });
+
+                // Increase quantity
+               function increaseQuantity() {
+
+
+                   
+                    quantity.value++;
+                }
+
+                // Decrease quantity
+                function decreaseQuantity() {
+                    // if (quantity.value > 0) {
+                    //     quantity.value--;
+                    // }
+                    quantity.value--;
+                }
+
+                return {
+                    productName,
+                    price,
+                    quantity,
+                    totalAmount,
+                    increaseQuantity,
+                    decreaseQuantity
+                };
+            }
+
+       })
+
+       app.mount("#myapp");</script>
+
+
+
+    <script>
+       /* const app = Vue.createApp({
+
+            // Reactive data
+            data() {
+                return {
+                    productName: "Laptop Bag",
+                    price: 1000,
+                    quantity: 1
+                };
+            },
+
+            // Computed property
+            computed: {
+                totalAmount() {
+                    return this.price * this.quantity;
+                }
+            },
+
+            // Methods
+            methods: {
+                increaseQuantity() {
+                    this.quantity++;
+                },
+
+                decreaseQuantity() {
+                    if (this.quantity > 0) {
+                        this.quantity--;
+                    }
+                }
+            }
+
+        });
+
+        app.mount("#app");*/
+    </script>
+
+</body>
+</html>

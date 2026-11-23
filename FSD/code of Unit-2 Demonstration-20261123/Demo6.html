@@ -1,0 +1,117 @@
+﻿
+<title>Media Queries Example</title>
+
+<link href="a.css" media=""/>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 20px;
+        background-color: #FF0; /* Light gray background color */
+    }
+
+    h1 {
+        color: #007bff; /* Blue color */
+    }
+
+    p {
+        color: #333; /* Dark gray color */
+    }
+   
+
+    @media print {
+        header{
+            display:none;
+        }
+        body{
+            background-color:white;
+            color:black;
+        }
+    }
+
+   
+
+    /*@media print{
+        body,h1,p{
+            color:black;
+
+        }
+
+        header{
+            display:none;
+        }
+    }*/
+    /* Media query for screens larger than 600px */
+    
+
+    /* Media query for screens larger than 1200px */
+    
+    @media screen and (max-width: 1500px) {
+        h1 {
+            font-size: 3.0em; /* Further increase font size for very large screens */
+        }
+
+        p {
+            font-size: 1.6em; /* Further increase font size for very large screens */
+            color: #00F;
+        }
+        header {
+            position: fixed;
+            top: 0px;
+        }
+    }
+    @media screen and (max-width: 1200px) {
+        h1 {
+            font-size: 2.5em; /* Further increase font size for very large screens */
+        }
+
+        p {
+            font-size: 1.4em; /* Further increase font size for very large screens */
+            color: #0F0;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        body {
+            background-color: #fff; /* White background color for larger screens */
+        }
+
+        h1 {
+            font-size: 2em; /* Increase font size for larger screens */
+        }
+
+        p {
+            font-size: 1.2em; /* Increase font size for larger screens */
+            color: #F00;
+        }
+
+        header {
+            position: fixed;
+            bottom: 0px;
+        }
+    }
+</style>
+</head>
+<body>
+
+    <header>
+        <a href="https://www.shiksha.com/online-courses/technology-courses-certification-training-ct139">
+            Technology
+        </a> |
+        <a href="https://www.shiksha.com/online-courses/data-science-courses-certification-training-ct123">
+            Data Science
+        </a> |
+        <a href="https://www.shiksha.com/online-courses/management-courses-certification-training-ct135">
+            Management
+        </a> |
+        <a href="https://www.shiksha.com/online-courses/articles/">
+            Blog
+        </a> |
+    </header>
+
+    <h1>Responsive Heading</h1>
+
+    <p>
+        This is an example paragraph with text that will adapt its style based on the screen size using media queries.
+    </p>
+
+</body>
+</html>

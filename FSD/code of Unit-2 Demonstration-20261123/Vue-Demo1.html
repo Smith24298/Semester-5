@@ -1,0 +1,138 @@
+﻿<!--Vue
+ │
+ ├── createApp() → Creates Vue application
+ │
+ ├── setup() → Defines application logic
+ │
+ ├── ref() → Creates reactive variable
+ │       │
+ │       └── message = "Hello vue!"
+ │
+ ├── return { message } → Makes it available in HTML
+ │
+ └── mount('#app') → Connects Vue with <div id="app">-->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue JS - FSWD </title>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+    <body>
+        <h1>Hello B-E Division</h1>
+        <div id="app">
+            <input type="text" v-uppercase v-model="message" onblur="i1.focus()"/>
+
+            <div id="d">{{ message }}</div>
+            <div v-html="message" v-highlight></div><hr />
+            <img src="x.jpg" v-bind:alt="myMessage" /><hr />
+            <a v-bind:href="message"> Click here</a>
+            <input v-focus id="i1" type="text" placeholder="Enter username">
+            <button v-tooltip="'Delete this record'">
+                Delete
+            </button>
+
+        </div>
+
+        <script>
+
+
+
+            const { createApp, ref } = Vue
+
+            const app = createApp({
+
+                setup() {
+                    /*const in Vue code, don't interpret it as "the value can never change.
+                    " Interpret it as "this variable cannot be reassigned." */
+
+                    const message =ref('Hello Message!')
+
+                    const myMessage = ref('HELLO Message! no image')
+
+                    return {
+                        message,
+                        myMessage
+                    }
+                }
+
+            })
+
+
+            // Custom directive for UPPERCASE
+            app.directive('uppercase', {
+
+               mounted(el) {
+
+                   el.addEventListener('input', function () {
+
+                       el.value = el.value.toUpperCase()
+
+                       el.dispatchEvent(new Event('input'))
+
+                   })
+
+               }
+
+            })
+
+            //app.directive('uppercase', {
+
+            //   mounted(el) {
+            //       el.value = el.value.toUpperCase()
+            //    }
+            //    ,
+
+            //   updated(el) {
+            //       el.value = el.value.toUpperCase()
+            //   }
+
+            //})
+
+
+
+
+            // Custom directive for lowercase
+            app.directive('lowercase', {
+
+                mounted(el) {
+
+                    el.addEventListener('input', function () {
+
+                        el.value = el.value.toLowerCase()
+
+                        el.dispatchEvent(new Event('input'))
+
+                    })
+
+                }
+
+            })
+         
+
+
+
+
+
+
+            app.directive("focus", {
+                mounted(myele) {
+                    myele.focus()
+                }
+            })
+
+            app.directive("tooltip", {
+                mounted(el, binding) {
+                    el.setAttribute("title", binding.value)
+                }
+            })
+
+            app.directive("highlight", {
+                mounted(el) {
+                    el.style.backgroundColor = "yellow"
+                }
+            })
+            app.mount('#app')
+
+        </script>

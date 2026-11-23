@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Image Effects</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-8">
+
+    <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-6">
+
+        <h1 class="text-3xl font-bold mb-6 text-center">
+            Interactive Tailwind Image Effects
+        </h1>
+
+        <!-- Effect Selection -->
+        <div class="mb-6">
+            <label class="font-semibold">Choose Image Effect:</label>
+
+            <select id="effect"
+                    class="border rounded px-3 py-2 w-full mt-2">
+                <option value="">Normal</option>
+                <option value="rounded-xl">Rounded</option>
+                <option value="rounded-full">Circle</option>
+                <option value="shadow-2xl">Shadow</option>
+                <option value="grayscale">Grayscale</option>
+                <option value="sepia">Sepia</option>
+                <option value="blur-sm">Blur</option>
+                <option value="brightness-50">Brightness</option>
+                <option value="contrast-200">Contrast</option>
+                <option value="saturate-200">Saturation</option>
+                <option value="opacity-50">Opacity</option>
+                <option value="rotate-6">Rotate</option>
+                <option value="scale-125">Zoom</option>
+                <option value="ring-4 ring-blue-500">Blue Ring</option>
+                <option value="border-4 border-red-500">Border</option>
+            </select>
+        </div>
+
+        <!-- Image -->
+        <div class="flex justify-center">
+
+            <img id="photo"
+                 src="img_girl.jpg"
+                 class="w-96 transition-all duration-500 object-cover">
+
+        </div>
+
+    </div>
+
+    <script>
+    const image = document.getElementById("photo");
+        const select = document.getElementById("effect");
+
+        const baseClass = "w-96 transition-all duration-500 object-cover";
+
+        select.addEventListener("change", function () {
+
+            //image.className = baseClass;
+
+            image.classList.add(this.value)
+
+            if (this.value != "") {
+                image.classList.add(...this.value.split(" "));
+            }
+
+        });</script>
+
+</body>
+</html>

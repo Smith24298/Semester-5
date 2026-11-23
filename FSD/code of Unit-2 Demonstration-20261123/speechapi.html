@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Speech API Demo</title>
+</head>
+<body>
+
+    <h1>Web Speech API Example</h1>
+
+    <textarea id="text" rows="5" cols="50">
+Welcome to Nirma University. This is a demonstration of the Web Speech API.
+    </textarea>
+
+    <br><br>
+
+    <button onclick="speakText()">Speak</button>
+    <button onclick="speechSynthesis.cancel()">Stop</button>
+
+    <script>
+        function speakText() {
+            // Stop any currently running speech
+            speechSynthesis.cancel();
+
+            // Get text from textarea
+            const text = document.getElementById("text").value;
+
+            // Create speech object
+            const utterance = new SpeechSynthesisUtterance(text);
+
+            // Optional settings
+            utterance.lang = "en-US"; // Language
+            utterance.rate = 1;       // Speed (0.1 to 10)
+            utterance.pitch = 1;      // Pitch (0 to 2)
+            utterance.volume = 1;     // Volume (0 to 1)
+
+            // Speak the text
+            speechSynthesis.speak(utterance);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <title>Example-1 Vue</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{ count }}</p>
+        <button @click="count++">Increase</button>
+    </div>
+
+    <script>
+const app = Vue.createApp({
+    data() {
+        return {
+            count: 0
+        };
+    }
+});
+
+app.mount("#app");
+    </script>
+
+</body>
+</html>

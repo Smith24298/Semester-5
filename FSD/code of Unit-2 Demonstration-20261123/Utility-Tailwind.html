@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS Demo</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+
+/*        .d{
+            color:red;
+            border:3px solid green;
+            padding:10px;
+        }
+        .my{
+            border-radius:50px !important
+        }*/
+    </style>
+</head>
+<body>
+
+    <div class="d"> Content 1
+
+    <div class="py-10"> Subsection </div>
+
+        
+    </div>
+
+     <!--Text Properties--> 
+    <h1 class="text-4xl font-bold text-blue-600 text-center">
+        Tailwind CSS Demo
+    </h1>
+
+    <p class="text-lg italic text-gray-600 text-center mt-3">
+        Text, Color, Transition and Effects
+    </p>
+    <!--<div class="d">
+        Content
+        <div class="d1">data</div>
+        <div>Data1</div>
+    </div>-->
+     <!--Color & Background -->
+    <div class=" rounded-lg my bg-purple-500  text-white p-5 mt-8  text-center">-->
+        Background and Text Color
+    </div>
+
+     <!--Hover + Transition -->
+    <button class="bg-blue-500 text-white px-10 py-3 mt-3 rounded-lg-->
+                   transition duration-1000
+                   hover:bg-green-500
+                   hover:scale-110 origin-center hover:rotate-45">
+        Hover Me
+    </button>
+
+     <!--Shadow + Transform--> 
+    <div style="border:1px solid red" class="bg-white p-20 ml-8 rounded-xl shadow-lg
+                transition duration-500
+                hover:shadow-2xl
+                hover:translate-y-10 m:p-10" >
+
+        <h2 class="text-2xl font-bold text-gray-800">
+            Interactive Card
+        </h2>
+
+        <p class="text-gray-600 mt-2">
+            Move the mouse over this card.
+        </p>
+    </div>
+
+     <!--Gradient--> 
+    <div class="bg-gradient-to-r from-blue-100 to-purple-800
+                text-white text-center p-6 mt-8 rounded-xl">
+        Gradient Background
+    </div>
+
+</body>
+</html>

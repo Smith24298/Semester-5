@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue.js Student Demo</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <h2>Student Application</h2>
+
+        <input v-model="studentName"
+               placeholder="Enter your name">
+
+        <p>Hello, {{ studentName }}</p>
+
+        <button @click="show = !show">
+            Show / Hide Subjects
+        </button>
+
+        <ul v-if="show">
+            <li v-for="subject in subjects">
+                {{ subject }}
+            </li>
+        </ul>
+        <ul v-else>
+            Invisible 
+        </ul>
+
+    </div>
+
+    <script>
+const app = Vue.createApp({
+
+    data() {
+        return {
+            studentName: "",
+            show: true,
+            subjects: [
+                "Web Technology",
+                "Database",
+                "JavaScript"
+            ]
+        };
+    }
+
+});
+
+app.mount("#app");
+    </script>
+
+</body>
+</html>

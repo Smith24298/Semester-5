@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Directive for Date Formatting</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p v-format-date="date"></p>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    const app = createApp({
+      data() {
+        return {
+          date: '2022-03-05T12:00:00'
+        };
+      }
+    });
+
+    app.directive('format-date', {
+      mounted(el, binding) {
+        const date = binding.value;
+        const formattedDate = formatDate(date);
+        el.textContent = formattedDate;
+      }
+    });
+
+    function formatDate(dateString) {
+      const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      };
+
+      return new Date(dateString).toLocaleDateString('en-US', options);
+    }
+
+    app.mount('#app');
+  </script>
+</body>
+</html>

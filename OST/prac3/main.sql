@@ -53,12 +53,12 @@ INSERT INTO Courses (course_name, credits) VALUES
 ('Computer Networks', 3);
 
 INSERT INTO Enrollments (student_id, course_id, semester) VALUES
-(1,1,'Semester 5'),
-(1,2,'Semester 5'),
-(2,1,'Semester 5'),
-(3,3,'Semester 5'),
-(4,4,'Semester 5'),
-(5,2,'Semester 5');
+(1,1,5),
+(1,2,5),
+(2,1,5)
+(3,3,4),
+(4,4,4),
+(5,2,4);
 
 -- ==========================================
 -- SQL Queries

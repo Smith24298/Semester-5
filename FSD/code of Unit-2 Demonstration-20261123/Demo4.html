@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        /* Default image for large screens */
+       
+        #image2 {
+            content: url("img_NU.jpeg");
+            width: auto;
+        }
+
+        /* For screens up to 1500px */
+        @media screen and (max-width: 1500px) {
+          
+
+            #image2 {
+                content: url("img_girl.jpg");
+            }
+        }
+
+        /* For screens up to 600px */
+        @media screen and (max-width: 600px) {
+           
+
+            #image2 {
+                content: url("logo.jpeg");
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Change Images Depending on Browser Width</h2>
+    <p>Resize the browser width and the image will change at 600px and 1500px.</p>
+
+    <!--<img id="image1" alt="Flowers">
+
+    <br><br>-->
+
+    <img id="image2" alt="Responsive Image">
+</body>
+</html>

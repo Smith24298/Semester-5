@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Speech Media Example</title>
+
+    <style>
+        /* Styles for normal screen display */
+        body {
+            font-size: 20px;
+            color: black;
+        }
+
+        h1 {
+            color: blue;
+        }
+
+        /* Styles for speech output */
+        @media speech {
+            body {
+                background-color: yellow;
+            }
+
+            p {
+                speak: always;
+            }
+        }
+    </style>
+    <script>
+
+        console.log(window.matchMedia("speech").matches);
+    </script>
+</head>
+<body>
+
+    <h1>Welcome to Nirma University</h1>
+
+    <p>
+        This paragraph will be spoken by a speech synthesizer if the
+        browser or assistive technology supports speech media.
+    </p>
+    <p id="result"></p>
+    <script>
+        if (window.matchMedia("speech").matches) {
+            document.getElementById("result").innerHTML =
+                "Speech media is active.";
+        } else {
+            document.getElementById("result").innerHTML =
+                "Speech media is NOT active.";
+        }
+    </script>
+
+
+    <script>
+        function speakText() {
+            const msg = new SpeechSynthesisUtterance(
+                "Hello, this is Firefox speech synthesis."
+            );
+            speechSynthesis.speak(msg);
+        }
+    </script>
+    <button onclick="speakText()">Speak</button>
+
+
+</body>
+</html >
